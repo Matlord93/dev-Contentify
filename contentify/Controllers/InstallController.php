@@ -144,7 +144,7 @@ class InstallController extends Controller
 
                 break;
             case 1:
-                if (version_compare(PHP_VERSION, '5.6.4') >= 0) {
+                if (version_compare(PHP_VERSION, '8.0.28') >= 0) {
                     $version = '<span class="state yes">Yes, '.phpversion().'</span>';
                 } else {
                     $version = '<span class="state no">No, '.phpversion().'</span>';
@@ -194,7 +194,7 @@ class InstallController extends Controller
                 $title      = 'Preconditions';
                 $content    = "<p>These packages need to be installed:</p>
                               <ul>
-                              <li>PHP >= 5.5.9 $version</li>
+                              <li>PHP >= 8.0.28 $version</li>
                               <li>OpenSSL Extension $openSsl</li>
                               <li>PDO Extension $pdo</li>
                               <li>Mbstring Extension $mbString</li>
