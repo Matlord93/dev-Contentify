@@ -1,0 +1,17 @@
+{
+    "slug": "Teams",
+    "admin-nav": [
+        {
+            "icon": "flag",
+            "category": 4,
+            "position": 2
+        },
+        {
+            "icon": "users",
+            "category": 4,
+            "position": 3,
+            "translate": "app.team_members",
+            "url": "admin/members"
+        }
+    ]
+}

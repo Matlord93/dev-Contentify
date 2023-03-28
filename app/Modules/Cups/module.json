@@ -1,0 +1,11 @@
+{
+    "slug": "Cups",
+    "search": ["cups", "teams"],
+    "admin-nav": [
+        {
+            "url": "admin/cups",
+            "icon": "share-alt",
+            "category": 3
+        }
+    ]
+}

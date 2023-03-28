@@ -1,0 +1,10 @@
+{
+    "slug": "Servers",
+    "admin-nav": [
+        {
+            "icon": "database",
+            "category": 3,
+            "position": 7
+        }
+    ]
+}

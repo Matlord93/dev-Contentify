@@ -1,0 +1,11 @@
+{
+    "slug": "Videos",
+    "search": ["videos"],
+    "admin-nav": [
+        {
+            "icon": "youtube",
+            "category": 2,
+            "position": 3
+        }
+    ]
+}

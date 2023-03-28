@@ -1,0 +1,10 @@
+{
+    "slug": "Roles",
+    "admin-nav": [
+        {
+            "icon": "lock",
+            "category": 4,
+            "position": 8
+        }
+    ]
+}
