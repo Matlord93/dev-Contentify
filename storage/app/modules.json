@@ -1,0 +1,593 @@
+{
+    "Adverts": {
+        "basename": "Adverts",
+        "slug": "Adverts",
+        "admin-nav": [
+            {
+                "icon": "bullhorn",
+                "category": 2,
+                "position": 6
+            }
+        ],
+        "id": 1127603947,
+        "enabled": true,
+        "order": 9001
+    },
+    "Auth": {
+        "basename": "Auth",
+        "slug": "Auth",
+        "enabled": true,
+        "id": 1491869543,
+        "order": 9001
+    },
+    "Awards": {
+        "basename": "Awards",
+        "slug": "Awards",
+        "admin-nav": [
+            {
+                "icon": "trophy",
+                "category": 3,
+                "position": 3
+            }
+        ],
+        "id": 575071944,
+        "enabled": true,
+        "order": 9001
+    },
+    "CashFlows": {
+        "basename": "CashFlows",
+        "slug": "Cash Flows",
+        "admin-nav": [
+            {
+                "url": "admin\/cash-flows",
+                "icon": "chart-line",
+                "category": 1,
+                "position": 8
+            }
+        ],
+        "id": 210728461,
+        "enabled": true,
+        "order": 9001
+    },
+    "Comments": {
+        "basename": "Comments",
+        "slug": "Comments",
+        "enabled": true,
+        "id": -1494682500,
+        "order": 9001
+    },
+    "Config": {
+        "basename": "Config",
+        "slug": "Config",
+        "admin-nav": [
+            {
+                "icon": "cog",
+                "category": 4,
+                "position": 5
+            }
+        ],
+        "id": -752473526,
+        "enabled": true,
+        "order": 9001
+    },
+    "Contact": {
+        "basename": "Contact",
+        "slug": "Contact",
+        "admin-nav": [
+            {
+                "icon": "envelope",
+                "category": 4,
+                "position": 6
+            }
+        ],
+        "id": -2082480220,
+        "enabled": true,
+        "order": 9001
+    },
+    "Countries": {
+        "basename": "Countries",
+        "slug": "Countries",
+        "admin-nav": [
+            {
+                "icon": "flag",
+                "category": 2,
+                "position": 9
+            }
+        ],
+        "id": -543725298,
+        "enabled": true,
+        "order": 9001
+    },
+    "Cups": {
+        "basename": "Cups",
+        "slug": "Cups",
+        "search": [
+            "cups",
+            "teams"
+        ],
+        "admin-nav": [
+            {
+                "url": "admin\/cups",
+                "icon": "share-alt",
+                "category": 3
+            }
+        ],
+        "id": 485284612,
+        "enabled": true,
+        "order": 9001
+    },
+    "Dashboard": {
+        "basename": "Dashboard",
+        "slug": "Dashboard",
+        "admin-nav": [
+            {
+                "icon": "home",
+                "category": 1,
+                "position": 1
+            }
+        ],
+        "id": -563774117,
+        "enabled": true,
+        "order": 9001
+    },
+    "Diag": {
+        "basename": "Diag",
+        "slug": "Diag",
+        "enabled": true,
+        "id": -586920252,
+        "order": 9001
+    },
+    "Downloads": {
+        "basename": "Downloads",
+        "slug": "Downloads",
+        "search": [
+            "downloads"
+        ],
+        "admin-nav": [
+            {
+                "icon": "folder",
+                "category": 1,
+                "position": 7
+            }
+        ],
+        "id": -914217450,
+        "enabled": true,
+        "order": 9001
+    },
+    "Events": {
+        "basename": "Events",
+        "slug": "Events",
+        "search": [
+            "events"
+        ],
+        "admin-nav": [
+            {
+                "icon": "calendar",
+                "category": 1,
+                "position": 4
+            }
+        ],
+        "id": 1412125308,
+        "enabled": true,
+        "order": 9001
+    },
+    "Example": {
+        "basename": "Example",
+        "slug": "Example",
+        "enabled": true,
+        "id": -1588485629,
+        "order": 9001
+    },
+    "Forums": {
+        "basename": "Forums",
+        "slug": "Forums",
+        "search": [
+            "threads"
+        ],
+        "admin-nav": [
+            {
+                "icon": "comment",
+                "category": 2,
+                "position": 7
+            },
+            {
+                "url": "admin\/forum-reports",
+                "icon": "exclamation-triangle",
+                "translate": "app.object_forum_reports",
+                "category": 2,
+                "position": 8
+            }
+        ],
+        "id": -101556338,
+        "enabled": true,
+        "order": 9001
+    },
+    "Friends": {
+        "basename": "Friends",
+        "slug": "Friends",
+        "enabled": true,
+        "id": -296531467,
+        "order": 9001
+    },
+    "Galleries": {
+        "basename": "Galleries",
+        "slug": "Galleries",
+        "admin-nav": [
+            {
+                "icon": "file-image",
+                "category": 1,
+                "position": 6
+            }
+        ],
+        "id": 1979706388,
+        "enabled": true,
+        "order": 9001
+    },
+    "Games": {
+        "basename": "Games",
+        "slug": "Games",
+        "admin-nav": [
+            {
+                "icon": "gamepad",
+                "category": 3,
+                "position": 2
+            }
+        ],
+        "id": 1054999605,
+        "enabled": true,
+        "order": 9001
+    },
+    "Images": {
+        "basename": "Images",
+        "slug": "Images",
+        "admin-nav": [
+            {
+                "icon": "image",
+                "category": 1,
+                "position": 5
+            }
+        ],
+        "id": -407651492,
+        "enabled": true,
+        "order": 9001
+    },
+    "Languages": {
+        "basename": "Languages",
+        "slug": "Languages",
+        "enabled": true,
+        "id": 572576218,
+        "order": 9001
+    },
+    "Maps": {
+        "basename": "Maps",
+        "slug": "Maps",
+        "admin-nav": [
+            {
+                "icon": "globe",
+                "category": 3,
+                "position": 6
+            }
+        ],
+        "id": -417552485,
+        "enabled": true,
+        "order": 9001
+    },
+    "Matches": {
+        "basename": "Matches",
+        "slug": "Matches",
+        "admin-nav": [
+            {
+                "icon": "crosshairs",
+                "category": 3,
+                "position": 1
+            }
+        ],
+        "id": -912577498,
+        "enabled": true,
+        "order": 9001
+    },
+    "Messages": {
+        "basename": "Messages",
+        "slug": "Messages",
+        "enabled": true,
+        "id": 578059456,
+        "order": 9001
+    },
+    "Modules": {
+        "basename": "Modules",
+        "slug": "Modules",
+        "admin-nav": [
+            {
+                "icon": "cubes",
+                "category": 4,
+                "position": 9
+            }
+        ],
+        "id": -519407029,
+        "enabled": true,
+        "order": 9001
+    },
+    "MorpheusTheme": {
+        "basename": "MorpheusTheme",
+        "slug": "Morpheus Theme",
+        "theme": true,
+        "id": 1122390932,
+        "enabled": true,
+        "order": 9001
+    },
+    "Navigations": {
+        "basename": "Navigations",
+        "slug": "Navigations",
+        "admin-nav": [
+            {
+                "icon": "bars",
+                "category": 4,
+                "position": 4
+            }
+        ],
+        "id": 733828900,
+        "enabled": true,
+        "order": 9001
+    },
+    "News": {
+        "basename": "News",
+        "slug": "News",
+        "search": [
+            "news"
+        ],
+        "admin-nav": [
+            {
+                "icon": "newspaper",
+                "category": 1,
+                "position": 2
+            }
+        ],
+        "id": -1109313938,
+        "enabled": true,
+        "order": 9001
+    },
+    "Opponents": {
+        "basename": "Opponents",
+        "slug": "Opponents",
+        "admin-nav": [
+            {
+                "icon": "shield-alt",
+                "category": 3,
+                "position": 4
+            }
+        ],
+        "id": -1269526513,
+        "enabled": true,
+        "order": 9001
+    },
+    "Pages": {
+        "basename": "Pages",
+        "slug": "Pages",
+        "search": [
+            "articles"
+        ],
+        "admin-nav": [
+            {
+                "icon": "file",
+                "category": 1,
+                "position": 3
+            }
+        ],
+        "id": -508179855,
+        "enabled": true,
+        "order": 9001
+    },
+    "Partners": {
+        "basename": "Partners",
+        "slug": "Partners",
+        "admin-nav": [
+            {
+                "icon": "money-bill-alt",
+                "category": 2,
+                "position": 5
+            }
+        ],
+        "id": 379401010,
+        "enabled": true,
+        "order": 9001
+    },
+    "PhobosTheme": {
+        "basename": "PhobosTheme",
+        "slug": "Phobos Theme",
+        "theme": true,
+        "id": -1129226425,
+        "enabled": true,
+        "order": 9001
+    },
+    "Polls": {
+        "basename": "Polls",
+        "slug": "Polls",
+        "search": [
+            "polls"
+        ],
+        "admin-nav": [
+            {
+                "icon": "poll",
+                "category": 2,
+                "position": 11
+            }
+        ],
+        "id": -587339286,
+        "enabled": true,
+        "order": 9001
+    },
+    "Questions": {
+        "basename": "Questions",
+        "slug": "Questions",
+        "search": [
+            "questions"
+        ],
+        "admin-nav": [
+            {
+                "icon": "tasks",
+                "url": "admin\/questions",
+                "category": 2,
+                "position": 10
+            }
+        ],
+        "id": 137221750,
+        "enabled": true,
+        "order": 9001
+    },
+    "Roles": {
+        "basename": "Roles",
+        "slug": "Roles",
+        "admin-nav": [
+            {
+                "icon": "lock",
+                "category": 4,
+                "position": 8
+            }
+        ],
+        "id": 2013200835,
+        "enabled": true,
+        "order": 9001
+    },
+    "Search": {
+        "basename": "Search",
+        "slug": "Search",
+        "enabled": true,
+        "id": -1285759343,
+        "order": 9001
+    },
+    "Servers": {
+        "basename": "Servers",
+        "slug": "Servers",
+        "admin-nav": [
+            {
+                "icon": "database",
+                "category": 3,
+                "position": 7
+            }
+        ],
+        "id": -2143826837,
+        "enabled": true,
+        "order": 9001
+    },
+    "Shouts": {
+        "basename": "Shouts",
+        "slug": "Shouts",
+        "enabled": true,
+        "id": 565851884,
+        "order": 9001
+    },
+    "Slides": {
+        "basename": "Slides",
+        "slug": "Slides",
+        "admin-nav": [
+            {
+                "icon": "play",
+                "category": 2,
+                "position": 2
+            }
+        ],
+        "id": -1083431513,
+        "enabled": true,
+        "order": 9001
+    },
+    "Streams": {
+        "basename": "Streams",
+        "slug": "Streams",
+        "search": [
+            "streams"
+        ],
+        "admin-nav": [
+            {
+                "icon": "video",
+                "category": 2,
+                "position": 4
+            }
+        ],
+        "id": -1069399194,
+        "enabled": true,
+        "order": 9001
+    },
+    "Teams": {
+        "basename": "Teams",
+        "slug": "Teams",
+        "admin-nav": [
+            {
+                "icon": "flag",
+                "category": 4,
+                "position": 2
+            },
+            {
+                "icon": "users",
+                "category": 4,
+                "position": 3,
+                "translate": "app.team_members",
+                "url": "admin\/members"
+            }
+        ],
+        "id": 1459817820,
+        "enabled": true,
+        "order": 9001
+    },
+    "Tournaments": {
+        "basename": "Tournaments",
+        "slug": "Tournaments",
+        "admin-nav": [
+            {
+                "icon": "crosshairs",
+                "category": 3,
+                "position": 5
+            }
+        ],
+        "id": 1646294292,
+        "enabled": true,
+        "order": 9001
+    },
+    "Users": {
+        "basename": "Users",
+        "slug": "Users",
+        "search": [
+            "users"
+        ],
+        "admin-nav": [
+            {
+                "icon": "user",
+                "category": 4,
+                "position": 1
+            }
+        ],
+        "id": -717059347,
+        "enabled": true,
+        "order": 9001
+    },
+    "Videos": {
+        "basename": "Videos",
+        "slug": "Videos",
+        "search": [
+            "videos"
+        ],
+        "admin-nav": [
+            {
+                "icon": "youtube",
+                "category": 2,
+                "position": 3
+            }
+        ],
+        "id": 772169988,
+        "enabled": true,
+        "order": 9001
+    },
+    "Visitors": {
+        "basename": "Visitors",
+        "slug": "Visitors",
+        "admin-nav": [
+            {
+                "icon": "chart-pie",
+                "category": 4,
+                "position": 7
+            }
+        ],
+        "id": -2113747351,
+        "enabled": true,
+        "order": 9001
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "slug": "Maps",
+    "admin-nav": [
+        {
+            "icon": "globe",
+            "category": 3,
+            "position": 6
+        }
+    ]
+}

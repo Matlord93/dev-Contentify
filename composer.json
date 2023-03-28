@@ -1,0 +1,82 @@
+{
+    "name": "contentify/contentify",
+    "type": "project",
+    "description": "Contentify is an esports CMS based on the Laravel 9 framework.",
+    "keywords": ["cms", "contentify", "gaming", "esports", "website"],
+	"homepage": "http://www.contentify.org",
+    "license": "MIT",
+    "require": {
+        "php": "^8.0.2",
+        "cartalyst/sentinel": "6.*",
+        "chriskonnertz/bbcode": "1.*",
+        "chriskonnertz/jobs": "3.*",
+        "chriskonnertz/open-graph": "2.*",
+        "fideloper/proxy": "4.4.2",
+        "guzzlehttp/guzzle": "7.4.5",
+        "intervention/image": "^2.7",
+        "invisnik/laravel-steam-auth": "4.4.0",
+        "laravel/framework": "^9.19",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7",
+        "laravelcollective/html": "6.*",
+        "matlord/modules": "dev-main",
+        "oyejorge/less.php": "1.*",
+        "watson/validating": "7.*"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+		"squizlabs/php_codesniffer": "4.0.x-dev",
+        "spatie/laravel-ignition": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "app/",
+            "Contentify\\": "contentify"
+        },
+	"files": [
+            "app/helpers.php"
+        ]
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

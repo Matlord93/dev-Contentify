@@ -1,0 +1,11 @@
+{
+    "slug": "Pages",
+    "search": ["articles"],
+    "admin-nav": [
+        {
+            "icon": "file",
+            "category": 1,
+            "position": 3
+        }
+    ]
+}

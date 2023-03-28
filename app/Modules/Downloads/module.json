@@ -1,0 +1,11 @@
+{
+    "slug": "Downloads",
+    "search": ["downloads"],
+    "admin-nav": [
+        {
+            "icon": "folder",
+            "category": 1,
+            "position": 7
+        }
+    ]
+}

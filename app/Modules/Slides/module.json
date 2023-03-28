@@ -1,0 +1,10 @@
+{
+    "slug": "Slides",
+    "admin-nav": [
+        {
+            "icon": "play",
+            "category": 2,
+            "position": 2
+        }
+    ]
+}

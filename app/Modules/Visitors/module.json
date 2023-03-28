@@ -1,0 +1,10 @@
+{
+    "slug": "Visitors",
+    "admin-nav": [
+        {
+            "icon": "chart-pie",
+            "category": 4,
+            "position": 7
+        }
+    ]
+}
