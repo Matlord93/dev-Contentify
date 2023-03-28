@@ -123,7 +123,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     public function table(array $header, array $rows, array $attributes) : string
     {
         $attrs = self::attributes($attributes);
-        $code = '<table style="color: #fff;" class="table table-hover " '.$attrs.'>';
+        $code = '<table style="color: #7f8891;" class="table table-hover " '.$attrs.'>';
 
         /*
          * Table head
