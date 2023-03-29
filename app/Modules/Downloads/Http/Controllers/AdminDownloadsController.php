@@ -45,4 +45,9 @@ class AdminDownloadsController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $download) 
+    { 
+        return parent::callAction($method, array_values($download));
+    }
 }

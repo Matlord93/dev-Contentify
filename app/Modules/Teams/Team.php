@@ -57,7 +57,7 @@ class Team extends BaseModel
 
     public static $relationsData = [
         'matches'   => [
-            self::HAS_MANY, 'App\Modules\Matches\Match', 'foreignKey' => 'left_team_id', 'dependency' => true
+            self::HAS_MANY, 'App\Modules\Matches\Match1', 'foreignKey' => 'left_team_id', 'dependency' => true
         ],
         'members'   => [self::BELONGS_TO_MANY, 'User'],
         'teamCat'   => [self::BELONGS_TO, 'App\Modules\Teams\TeamCat'],

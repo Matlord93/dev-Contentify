@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'E-Sportz'),
+    'name' => env('APP_NAME', 'Contentify'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'version' => '0.9',
+    'version' => '3.2-dev',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'timezone' => 'Europe/Berlin',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'locale' => 'de',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -132,7 +132,7 @@ return [
     |
     */
 
-    'faker_locale' => 'de_DE',
+    'faker_locale' => 'en_US',
 	
 	 /*
     |--------------------------------------------------------------------------
@@ -227,7 +227,7 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        //Illuminate\Translation\TranslationServiceProvider::class,
+        //Illuminate\Translation\TranslationServiceProvider::class, // Replaced by custom translation service provider
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
@@ -239,8 +239,9 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
-        //App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        //App\Providers\AuthServiceProvider::class, // We do not use Laravel's authentication
+        // App\Providers\BroadcastServiceProvider::class, // Deactivated per Laravel's default
+		App\Providers\ConfigServiceProvider::class, // Custom service provider
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 		

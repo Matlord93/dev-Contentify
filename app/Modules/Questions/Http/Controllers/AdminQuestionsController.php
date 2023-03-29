@@ -45,4 +45,9 @@ class AdminQuestionsController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $question) 
+    { 
+        return parent::callAction($method, array_values($question));
+    }
 }
