@@ -186,7 +186,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
 
         $results = [];
         foreach ($newsCollection as $news) {
-            $results[$news->title] = URL::to('news/'.$news->id.'/show');
+            $results[$news->title] = URL::to('news/'.$news->id.'/');
         }
 
         return $results;

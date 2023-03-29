@@ -61,4 +61,9 @@ class AdminMatchesController extends BackController
 
         $this->layout->page->with('maps', $maps);
     }
+	
+	public function callAction($method, $match) 
+    { 
+        return parent::callAction($method, array_values($match));
+     }
 }

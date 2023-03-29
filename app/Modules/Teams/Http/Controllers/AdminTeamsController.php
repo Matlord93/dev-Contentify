@@ -67,4 +67,10 @@ class AdminTeamsController extends BackController
 
         return $lineup;
     }
+
+		public function callAction($method, $team) 
+    { 
+        return parent::callAction($method, array_values($team));
+     }
+	
 }

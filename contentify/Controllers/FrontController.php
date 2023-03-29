@@ -59,4 +59,10 @@ abstract class FrontController extends BaseController
 
         return Redirect::to($url)->withInput(Request::only('search'));
     }
+	
+	public function callAction($method, $slug) 
+    { 
+        return parent::callAction($method, array_values($slug));
+		
+     }
 }

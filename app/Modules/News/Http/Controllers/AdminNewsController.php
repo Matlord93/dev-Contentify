@@ -48,4 +48,9 @@ class AdminNewsController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $news) 
+    { 
+        return parent::callAction($method, array_values($news));
+     }
 }

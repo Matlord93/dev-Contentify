@@ -53,4 +53,8 @@ class AdminMapsController extends BackController
             }
         ]);
     }
+	public function callAction($method, $map) 
+    { 
+        return parent::callAction($method, array_values($map));
+    }
 }

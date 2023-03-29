@@ -87,7 +87,6 @@ class Match1 extends BaseModel
     ];
 
     public static $relationsData = [
-        'matchScores'  => [self::HAS_MANY, 'App\Modules\Matches\MatchScore'], // Not a strong dependency.
         'game'         => [self::BELONGS_TO, 'App\Modules\Games\Game'],
         'tournament'   => [self::BELONGS_TO, 'App\Modules\Tournaments\Tournament'],
         'leftTeam'     => [self::BELONGS_TO, 'App\Modules\Teams\Team'],

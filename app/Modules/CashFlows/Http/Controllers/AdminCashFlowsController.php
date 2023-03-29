@@ -129,4 +129,9 @@ class AdminCashFlowsController extends BackController
 
         return Response::make($csvWriter->getContent(), 200, $headers);
     }
+	
+	public function callAction($method, $cash_flow) 
+    { 
+        return parent::callAction($method, array_values($cash_flow));
+    }
 }

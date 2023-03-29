@@ -45,4 +45,9 @@ class AdminPartnersController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $partner) 
+    { 
+        return parent::callAction($method, array_values($partner));
+    }
 }

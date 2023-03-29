@@ -25,7 +25,7 @@ class MatchScore extends BaseModel
     ];
 
     public static $relationsData = [
-        'match' => [self::BELONGS_TO, 'App\Modules\Matches\Match'],
+        'match' => [self::BELONGS_TO, 'App\Modules\Matches\Match1'],
         'map'   => [self::BELONGS_TO, 'App\Modules\Maps\Map'],
     ];
 
