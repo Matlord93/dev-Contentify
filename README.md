@@ -1,13 +1,13 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v3.2 ALPHA
+## Contentify CMS - v3.3 dev
 
 [![Build Status](https://img.shields.io/travis/Contentify/Contentify.svg?style=flat-square)](https://travis-ci.org/Contentify/Contentify)
 [![Laravel](https://img.shields.io/badge/Laravel-6-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 
-[Contentify](http://contentify.org/) is an esports CMS based on the PHP framework Laravel 9. 
+[Contentify](http://contentify.org/) is an esports CMS based on the PHP framework Laravel 10. 
 Build your gaming website with a modern CMS.
 
 - [x] Technologically advanced gaming CMS
@@ -26,15 +26,15 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Get the developer version
 
-Clone this repository via git and switch to the `3.2-dev` branch. 
+Clone this repository via git and switch to the `3.3-dev` branch. 
 Via console, go to the Contentify directory and run `php composer.phar install`. 
 Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
-officially support PHP 8.
+Only support PHP 8.1.
 
 ### Update
 
-To update from v3.1 to 3.2:
+To update from v3.2 to 3.3:
 There is no real update. Install 3.2 and then add all your data and changes from 3.1.
 
 **Changes**: [Changelog.md](changelog.md)

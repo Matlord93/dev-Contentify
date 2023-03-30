@@ -3,7 +3,7 @@
 <div class="video-player">
     @section('videos-video-youtube')
         @if ($video->provider == 'youtube')
-            <iframe src="//www.youtube.com/embed/{{ $video->permanent_id }}" allowfullscreen></iframe>
+            <iframe src="//https://www.youtube-nocookie.com/embed/{{ $video->permanent_id }}" allowfullscreen></iframe>
             <script>
                 $(document).ready(function()
                 {

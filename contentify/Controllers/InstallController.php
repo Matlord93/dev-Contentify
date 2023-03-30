@@ -144,7 +144,7 @@ class InstallController extends Controller
 
                 break;
             case 1:
-                if (version_compare(PHP_VERSION, '8.0.28') >= 0) {
+                if (version_compare(PHP_VERSION, '8.1') >= 0) {
                     $version = '<span class="state yes">Yes, '.phpversion().'</span>';
                 } else {
                     $version = '<span class="state no">No, '.phpversion().'</span>';
