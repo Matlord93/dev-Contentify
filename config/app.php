@@ -267,7 +267,7 @@ return [
         Matlord\Modules\ModulesServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         intervention\Image\ImageServiceProvider::class,
-        Invisnik\LaravelSteamAuth\SteamServiceProvider::class,
+        //Invisnik\LaravelSteamAuth\SteamServiceProvider::class, # not supportet Laravel 9
     ],
 
     /*
