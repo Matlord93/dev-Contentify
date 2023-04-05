@@ -194,7 +194,7 @@ class InstallController extends Controller
                 $title      = 'Preconditions';
                 $content    = "<p>These packages need to be installed:</p>
                               <ul>
-                              <li>PHP >= 8.0.28 $version</li>
+                              <li>PHP >= 8.1.0 $version</li>
                               <li>OpenSSL Extension $openSsl</li>
                               <li>PDO Extension $pdo</li>
                               <li>Mbstring Extension $mbString</li>
