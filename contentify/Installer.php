@@ -1116,7 +1116,9 @@ information about your stored data, and possibly entitlement to correction, bloc
                     $table->integer('access_counter')->default(0);
                 }
 
-                $table->nullableTimestamps(); // Add timestamps (columns created_at, updated_at)
+                //$table->nullableTimestamps(); // Add timestamps (columns created_at, updated_at)
+				$table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+				$table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
                 if ($contentObject === true or ! in_array('deleted_at', $contentObject)) {
                     $table->softDeletes(); // Add soft deletes (column deleted_at)
