@@ -6,6 +6,11 @@ use BaseModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use SoftDeletingTrait;
+use Request;
+use Contentify\Uploader;
+use File;
+use InterImage;
+
 
 /**
  * @property \Carbon                        $created_at
@@ -41,11 +46,6 @@ class Team extends BaseModel
     protected $slugable = true;
 
     protected $fillable = ['title', 'text', 'position', 'published', 'team_cat_id', 'country_id'];
-
-    public static $fileHandling = [
-        'image' => ['type' => 'image'],
-        'banner' => ['type' => 'image'],
-    ];
 
     protected $rules = [
         'title'         => 'required|min:3',
@@ -87,5 +87,50 @@ class Team extends BaseModel
     public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true);
+    }
+	
+	    public function uploadImage(string $fieldName)
+    {
+        $file       = Request::file($fieldName);
+        $extension  = $file->getClientOriginalExtension();
+
+        try {
+            $imgData = getimagesize($file->getRealPath()); // Try to gather info about the image
+        } catch (Exception $e) {
+            // Do nothing
+        }
+
+        if (! in_array(strtolower($extension), Uploader::ALLOWED_IMG_EXTENSIONS)) {
+            return Redirect::route('teams.edit', [$this->id])
+            ->withInput()->withErrors([trans('app.invalid_image')]);
+        }
+
+        // Check if image has a size. If not, it's not an image. Does not work for SVGs.
+        if (strtolower($extension) !== 'svg' and (! isset($imgData[2]) or ! $imgData[2])) {
+            return Redirect::route('teams.edit', [$this->id])
+                ->withInput()->withErrors([trans('app.invalid_image')]);
+        }
+
+        $filePath = public_path().'/uploads/teams/';
+
+        if (File::exists($filePath.$this->getOriginal($fieldName))) {
+            File::delete($filePath.$this->getOriginal($fieldName));
+        }
+
+        $filename           = $this->id.'_'.$fieldName.'.'.$extension;
+        $uploadedFile       = $file->move($filePath, $filename);
+        $this->$fieldName   = $filename;
+        $this->save();
+
+        if ($fieldName == 'image') {
+            if (File::exists($filePath.'80/'.$this->getOriginal($fieldName))) {
+                File::delete($filePath.'80/'.$this->getOriginal($fieldName));
+            }
+
+            InterImage::make($filePath.'/'.$filename)->resize(80, 80, function ($constraint) {
+                /** @var \Intervention\Image\Constraint $constraint */
+                $constraint->aspectRatio();
+            })->save($filePath.'80/'.$filename);
+        }
     }
 }
