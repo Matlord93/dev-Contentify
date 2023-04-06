@@ -17,7 +17,7 @@ Demo Seite https://dev.e-sportz.de
 
 User: demo
 
-Password: demo
+Password: demo12
 
 Build your gaming website with a modern CMS.
 
