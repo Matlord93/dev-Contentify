@@ -15,8 +15,9 @@ Demo Seite https://dev.e-sportz.de
 [Contentify](http://contentify.org/) is an esports CMS based on the PHP framework Laravel 9. 
 
 Demo Seite https://dev.e-sportz.de
+User: demo
+Password: demo
 
->>>>>>> 2b0ac1ddc8091498d177593a315b244b31a9abfe
 Build your gaming website with a modern CMS.
 
 - [x] Technologically advanced gaming CMS
