@@ -1,7 +1,7 @@
 {
     "name": "contentify/contentify",
     "type": "project",
-    "description": "Contentify is an esports CMS based on the Laravel 9 framework.",
+    "description": "Contentify is an esports CMS based on the Laravel 10 framework.",
     "keywords": ["cms", "contentify", "gaming", "esports", "website"],
 	"homepage": "http://www.contentify.org",
     "license": "MIT",
