@@ -412,7 +412,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
             // we have to use is to maintain a list with the names of all brand icons and then
             // to check if the current icon name is in this list.
             if (in_array($icon, $this->getBrandIconNames())) {
-                $category = 'fa';
+                $category = 'fab';
             }
         }
 
