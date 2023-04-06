@@ -7,7 +7,6 @@
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 
-<<<<<<< HEAD
 
 Demo Seite https://dev.e-sportz.de
 
@@ -16,7 +15,10 @@ Demo Seite https://dev.e-sportz.de
 
 Demo Seite https://dev.e-sportz.de
 
->>>>>>> 2b0ac1ddc8091498d177593a315b244b31a9abfe
+User: demo
+
+Password: demo12
+
 Build your gaming website with a modern CMS.
 
 - [x] Technologically advanced gaming CMS
