@@ -1,0 +1,10 @@
+{
+    "slug": "Matches",
+    "admin-nav": [
+        {
+            "icon": "crosshairs",
+            "category": 3,
+            "position": 1
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "slug": "Config",
+    "admin-nav": [
+        {
+            "icon": "cog",
+            "category": 4,
+            "position": 5
+        }
+    ]
+}

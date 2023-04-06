@@ -1,0 +1,11 @@
+{
+    "slug": "Users",
+    "search": ["users"],
+    "admin-nav": [
+        {
+            "icon": "user",
+            "category": 4,
+            "position": 1
+        }
+    ]
+}

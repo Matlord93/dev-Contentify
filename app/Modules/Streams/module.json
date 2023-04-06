@@ -1,0 +1,11 @@
+{
+    "slug": "Streams",
+    "search": ["streams"],
+    "admin-nav": [
+        {
+            "icon": "video",
+            "category": 2,
+            "position": 4
+        }
+    ]
+}

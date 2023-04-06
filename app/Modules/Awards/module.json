@@ -1,0 +1,10 @@
+{
+    "slug": "Awards",
+    "admin-nav": [
+        {
+            "icon": "trophy",
+            "category": 3,
+            "position": 3
+        }
+    ]
+}

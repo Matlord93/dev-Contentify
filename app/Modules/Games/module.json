@@ -1,0 +1,10 @@
+{
+    "slug": "Games",
+    "admin-nav": [
+        {
+            "icon": "gamepad",
+            "category": 3,
+            "position": 2
+        }
+    ]
+}

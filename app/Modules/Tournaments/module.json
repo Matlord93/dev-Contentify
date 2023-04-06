@@ -1,0 +1,10 @@
+{
+    "slug": "Tournaments",
+    "admin-nav": [
+        {
+            "icon": "crosshairs",
+            "category": 3,
+            "position": 5
+        }
+    ]
+}
