@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'version' => '3.3-dev',
+    'version' => '3.2-dev',
 
     /*
     |--------------------------------------------------------------------------
@@ -267,7 +267,7 @@ return [
         Matlord\Modules\ModulesServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         intervention\Image\ImageServiceProvider::class,
-        //Invisnik\LaravelSteamAuth\SteamServiceProvider::class, # not supportet Laravel 9
+        Invisnik\LaravelSteamAuth\SteamServiceProvider::class,
     ],
 
     /*
