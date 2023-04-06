@@ -518,7 +518,7 @@ $(document).ready(function()
          */
         this.fontIcon = function (icon)
         {
-            return '<i class="fa fa-' + icon + '"></i>';
+            return '<i class="fab fa-' + icon + '"></i>';
         };
 
         /**
