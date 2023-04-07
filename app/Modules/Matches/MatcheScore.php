@@ -9,13 +9,15 @@ use BaseModel;
  * @property int $right_score
  * @property int $map_id
  * @property int $match_id
- * @property \App\Modules\Matches\Match $match,
+ * @property \App\Modules\Matches\Matche $matche,
  * @property \App\Modules\Maps\Map $map
  */
-class MatchScore extends BaseModel
+class MatcheScore extends BaseModel
 {
 
     protected $fillable = ['left_score', 'right_score', 'map_id', 'match_id'];
+	
+	protected $table = 'match_scores';
 
     protected $rules = [
         'left_score'    => 'required|integer|min:0',
@@ -25,20 +27,20 @@ class MatchScore extends BaseModel
     ];
 
     public static $relationsData = [
-        'match' => [self::BELONGS_TO, 'App\Modules\Matches\Match1'],
+        'match' => [self::BELONGS_TO, 'App\Modules\Matches\Matche'],
         'map'   => [self::BELONGS_TO, 'App\Modules\Maps\Map'],
     ];
 
     public static function boot()
     {
-        self::saved(function(self $matchScore)
+        self::saved(function(self $matcheScore)
         {
-            $matchScore->match->updateScore();
+            $matcheScore->matche->updateScore();
         });
 
-        self::deleted(function(self $matchScore)
+        self::deleted(function(self $matcheScore)
         {
-            $matchScore->match->updateScore();
+            $matcheScore->matche->updateScore();
         });
     }
 }

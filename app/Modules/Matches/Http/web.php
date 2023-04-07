@@ -10,9 +10,9 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     );
     ModuleRoute::post('admin/matches/search', 'AdminMatchesController@search');
 
-    ModuleRoute::post('admin/matches/scores/store', 'AdminMatchScoresController@store');
-    ModuleRoute::delete('admin/matches/scores/{id}', 'AdminMatchScoresController@destroy');
-    ModuleRoute::put('admin/matches/scores/{id}', 'AdminMatchScoresController@update');
+    ModuleRoute::post('admin/matches/scores/store', 'AdminMatcheScoresController@store');
+    ModuleRoute::delete('admin/matches/scores/{id}', 'AdminMatcheScoresController@destroy');
+    ModuleRoute::put('admin/matches/scores/{id}', 'AdminMatcheScoresController@update');
 });
 
 ModuleRoute::get('matches', ['as' => 'matches.index', 'uses' => 'MatchesController@index']);

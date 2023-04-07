@@ -28,35 +28,35 @@ use SoftDeletingTrait;
  * @property int                                 $access_counter
  * @property int                                 $creator_id
  * @property int                                 $updater_id
- * @property \App\Modules\Matches\MatchScore[]   $match_scores
+ * @property \App\Modules\Matches\MatcheScore[]   $matche_scores
  * @property \App\Modules\Games\Game             $game
  * @property \App\Modules\Tournaments\Tournament $tournament
  * @property \App\Modules\Teams\Team             $left_team
  * @property \App\Modules\Opponents\Opponent     $right_team
  * @property \User                               $creator
  */
-class Match1 extends BaseModel
+class Matche extends BaseModel
 {
 
     use SoftDeletingTrait;
 
     /**
-     * Match state "open"
+     * matche state "open"
      */
     const STATE_OPEN = 0;
 
     /**
-     * Match state "closed"
+     * matche state "closed"
      */
     const STATE_CLOSED = 1;
 
     /**
-     * Match state "hidden"
+     * matche state "hidden"
      */
     const STATE_HIDDEN = 2;
 
     /**
-     * Match state "delayed"
+     * matche state "delayed"
      */
     const STATE_DELAYED = 3;
 
@@ -87,6 +87,7 @@ class Match1 extends BaseModel
     ];
 
     public static $relationsData = [
+        'matcheScores'  => [self::HAS_MANY, 'App\Modules\Matches\MatcheScore'], // Not a strong dependency.
         'game'         => [self::BELONGS_TO, 'App\Modules\Games\Game'],
         'tournament'   => [self::BELONGS_TO, 'App\Modules\Tournaments\Tournament'],
         'leftTeam'     => [self::BELONGS_TO, 'App\Modules\Teams\Team'],
@@ -95,7 +96,7 @@ class Match1 extends BaseModel
     ];
 
     /**
-     * Array with the names of available match states.
+     * Array with the names of available matche states.
      *
      * @var string[]
      */
@@ -110,35 +111,35 @@ class Match1 extends BaseModel
     {
         parent::boot();
 
-        self::created(function(self $match)
+        self::created(function(self $matche)
         {
             // @see \App\Modules\Events\Event
             $eventData = [
-                'title' => trans('app.object_match').': '.$match->right_team->title,
-                'url' => url('matches/'.$match->id),
+                'title' => trans('app.object_matche').': '.$matche->right_team->title,
+                'url' => url('matches/'.$matche->id),
                 'internal' => false,
-                'starts_at' => $match->played_at
+                'starts_at' => $matche->played_at
             ];
 
-            // Request creation of an event for the new match
+            // Request creation of an event for the new matche
             event('events::requestEventCreation', [$eventData]);
         });
 
-        self::saved(function(self $match)
+        self::saved(function(self $matche)
         {
             /*
              * Apply the right lineup to its team. This makes
              * on-the-fly team lineup changes possible.
              */
-            if ($match->right_lineup) {
-                $match->right_team->lineup = $match->right_lineup;
-                $match->right_team->save();
+            if ($matche->right_lineup) {
+                $matche->right_team->lineup = $matche->right_lineup;
+                $matche->right_team->save();
             }
         });
     }
 
     /**
-     * Select only matches that match filter criteria such as the team ID
+     * Select only matches that matche filter criteria such as the team ID
      *
      * @param Builder $query
      * @return Builder
@@ -154,17 +155,17 @@ class Match1 extends BaseModel
     }
 
     /**
-     * Count the comments that are related to this match.
+     * Count the comments that are related to this matche.
      * 
      * @return int
      */
     public function countComments() : int
     {
-        return Comment::count('match', $this->id);
+        return Comment::count('matche', $this->id);
     }
 
     /**
-     * Returns the score of the match with HTML spans which 
+     * Returns the score of the matche with HTML spans which 
      * indicate if the left or the right team is the winner.
      *
      * @param int $minDigits Minimal number of digits - prepend 0 if result has not enough digits
@@ -200,8 +201,8 @@ class Match1 extends BaseModel
     }
 
     /**
-     * Updates the match score that is directly written
-     * to the match model. That's a shortcut so you don't have to
+     * Updates the matche score that is directly written
+     * to the matche model. That's a shortcut so you don't have to
      * run trough all map results each time you want to know
      * what the overall result is.
      *
@@ -209,22 +210,22 @@ class Match1 extends BaseModel
      */
     public function updateScore()
     {
-        $matchScores = $this->match_scores;
+        $matcheScores = $this->matche_scores;
 
-        if (sizeof($matchScores) == 0) {
+        if (sizeof($matcheScores) == 0) {
             $this->left_score  = 0;
             $this->right_score = 0;
-        } elseif (sizeof($matchScores) == 1) {
-            $this->left_score  = $matchScores[0]->left_score;
-            $this->right_score = $matchScores[0]->right_score;
+        } elseif (sizeof($matcheScores) == 1) {
+            $this->left_score  = $matcheScores[0]->left_score;
+            $this->right_score = $matcheScores[0]->right_score;
         } else {
             $this->left_score  = 0;
             $this->right_score = 0;
 
-            foreach ($matchScores as $matchScore) {
-                if ($matchScore->left_score > $matchScore->right_score) {
+            foreach ($matcheScores as $matcheScore) {
+                if ($matcheScore->left_score > $matcheScore->right_score) {
                      $this->left_score++;
-                } elseif ($matchScore->left_score < $matchScore->right_score) {
+                } elseif ($matcheScore->left_score < $matcheScore->right_score) {
                     $this->right_score++;
                 }
                 // Ignore draws
@@ -235,7 +236,7 @@ class Match1 extends BaseModel
     }
 
     /**
-     * Creates and returns a title for the current match
+     * Creates and returns a title for the current matche
      *
      * @return string
      */

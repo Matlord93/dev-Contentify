@@ -2,13 +2,13 @@
 
 namespace App\Modules\Matches\Http\Controllers;
 
-use App\Modules\Matches\MatchScore;
+use App\Modules\Matches\MatcheScore;
 use BackController;
 use Request;
 use Response;
 use View;
 
-class AdminMatchScoresController extends BackController
+class AdminMatcheScoresController extends BackController
 {
 
     /**
@@ -20,14 +20,14 @@ class AdminMatchScoresController extends BackController
             return Response::make(null, 403);
         }
 
-        $matchScore = new MatchScore(Request::all());
+        $matcheScore = new MatcheScore(Request::all());
 
-        $okay = $matchScore->save();
+        $okay = $matcheScore->save();
 
         if (! $okay) {
             return Response::make(null, 400);
         } else {
-            return View::make('matches::admin_map', compact('matchScore'));
+            return View::make('matches::admin_map', compact('matcheScore'));
         }
     }
 
@@ -41,15 +41,15 @@ class AdminMatchScoresController extends BackController
             return Response::make(null, 403);
         }
 
-        $matchScore = MatchScore::findOrFail($id);
-        $matchScore->fill(Request::all());
+        $matcheScore = MatcheScore::findOrFail($id);
+        $matcheScore->fill(Request::all());
 
-        $okay = $matchScore->save();
+        $okay = $matcheScore->save();
 
         if (! $okay) {
             return Response::make(null, 400);
         } else {
-            return View::make('matches::admin_map', compact('matchScore'));
+            return View::make('matches::admin_map', compact('matcheScore'));
         }
     }
 
@@ -63,7 +63,7 @@ class AdminMatchScoresController extends BackController
             return Response::make(null, 403);
         }
 
-        MatchScore::destroy($id);
+        MatcheScore::destroy($id);
 
         return Response::make(null, 200);
     }
