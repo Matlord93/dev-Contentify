@@ -2,7 +2,7 @@
 
 namespace App\Modules\Matches\Http\Controllers;
 
-use App\Modules\Matches\Match1;
+use App\Modules\Matches\Matche;
 use DB;
 use View;
 use Widget;
@@ -14,7 +14,7 @@ class UpcomingMatchesWidget extends Widget
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
-        $matches = Match1::orderBy('played_at', 'ASC')->where('played_at', '>=', DB::raw('CURRENT_TIMESTAMP'))
+        $matches = Matche::orderBy('played_at', 'ASC')->where('played_at', '>=', DB::raw('CURRENT_TIMESTAMP'))
             ->take($limit)->get();
 
         if ($matches) {

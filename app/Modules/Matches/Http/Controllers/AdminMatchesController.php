@@ -3,7 +3,7 @@
 namespace App\Modules\Matches\Http\Controllers;
 
 use App\Modules\Maps\Map;
-use App\Modules\Matches\Match1;
+use App\Modules\Matches\Matche;
 use BackController;
 use Hover;
 use HTML;
@@ -20,7 +20,7 @@ class AdminMatchesController extends BackController
 
     public function __construct()
     {
-        $this->modelClass = Match1::class;
+        $this->modelClass = Matche::class;
 
         parent::__construct();
     }
@@ -37,17 +37,17 @@ class AdminMatchesController extends BackController
                 trans('app.object_tournament')  => 'tournament_id',
                 trans('matches::played_at')     => 'played_at'
             ],
-            'tableRow' => function(Match1 $match)
+            'tableRow' => function(Matche $matche)
             {
-                Hover::modelAttributes($match, ['access_counter', 'creator', 'updated_at']);
+                Hover::modelAttributes($matche, ['access_counter', 'creator', 'updated_at']);
 
                 return [
-                    $match->id,
-                    raw($match->state == 1 ? HTML::fontIcon('check') : HTML::fontIcon('times')),
-                    raw(Hover::pull().HTML::link('matches/'.$match->id, $match->left_team->title)),
-                    raw(HTML::link('matches/'.$match->id, $match->right_team->title)),
-                    $match->tournament->short,
-                    $match->played_at
+                    $matche->id,
+                    raw($matche->state == 1 ? HTML::fontIcon('check') : HTML::fontIcon('times')),
+                    raw(Hover::pull().HTML::link('matches/'.$matche->id, $matche->left_team->title)),
+                    raw(HTML::link('matches/'.$matche->id, $matche->right_team->title)),
+                    $matche->tournament->short,
+                    $matche->played_at
                 ];
             }
         ]);
@@ -62,8 +62,8 @@ class AdminMatchesController extends BackController
         $this->layout->page->with('maps', $maps);
     }
 	
-	public function callAction($method, $match) 
+	public function callAction($method, $matche) 
     { 
-        return parent::callAction($method, array_values($match));
+        return parent::callAction($method, array_values($matche));
      }
 }
