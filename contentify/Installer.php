@@ -885,11 +885,10 @@ information about your stored data, and possibly entitlement to correction, bloc
         ("de_cache", "cs_cache.jpg", 1, 1, 1),
         ("de_mirage", "cs_mirage.jpg", 1, 1, 1),
         ("de_season", "cs_season.jpg", 1, 1, 1),
-        ("de_overpass", "cs_overpass.jpg", 1, 1, 1)');		
+        ("de_overpass", "cs_overpass.jpg", 1, 1, 1),	
 		("de_vertigo", "de_vertigo.jpg", 1, 1, 1),
         ("de_ancient", "de_ancient.jpg", 1, 1, 1),
         ("de_anubis", "de_anubis.jpg", 1, 1, 1)');
-
 
         DB::insert('INSERT INTO tournaments(title, short, creator_id, updater_id) VALUES
         ("Electronic Sports League", "ESL", 1, 1),
