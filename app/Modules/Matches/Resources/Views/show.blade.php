@@ -66,7 +66,7 @@
             @if ($matche->broadcast)
                 <tr>
                     <th>{!! trans('matches::broadcast') !!}</th>
-                    <td>><a href="{{ $matche->broadcast }}" target="_blank" title="{{ trans('matches::broadcast') }}">{{ $matche->broadcast }}</a></td>
+                    <td><a href="{{ $matche->broadcast }}" target="_blank" title="{{ trans('matches::broadcast') }}">{{ $matche->broadcast }}</a></td>
                 </tr>
             @endif
             @if ($matche->left_lineup or $matche->right_lineup)

@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v3.2 ALPHA
+## Contentify CMS - v3.2 Dev
 
 [![Build Status](https://img.shields.io/travis/Contentify/Contentify.svg?style=flat-square)](https://travis-ci.org/Contentify/Contentify)
 [![Laravel](https://img.shields.io/badge/Laravel-6-orange.svg?style=flat-square)](http://laravel.com)
@@ -42,11 +42,6 @@ Via console, go to the Contentify directory and run `php composer.phar install`.
 Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 officially support PHP 8.
-
-### Update
-
-To update from v3.1 to 3.2:
-There is no real update. Install 3.2 and then add all your data and changes from 3.1.
 
 **Changes**: [Changelog.md](changelog.md)
 
