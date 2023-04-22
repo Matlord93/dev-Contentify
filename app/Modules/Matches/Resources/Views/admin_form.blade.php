@@ -25,16 +25,11 @@
 
     {!! Form::smartTextarea('text', trans('app.description'), true) !!}
 	
-	{!! Form::smartText('left_score', trans('left_score')) !!}
-
-    {!! Form::smartText('right_score', trans('right_score')) !!}
-
     {!! Form::smartDateTime('played_at', trans('matches::played_at')) !!}
     
     {!! Form::smartCheckbox('featured', trans('app.featured')) !!}
 	
-
-    <!-- We can't add scores to a match that doesn't actually exist -->
+   <!-- We can't add scores to a match that doesn't actually exist -->
     @if (isset($model))
         {!! Form::smartGroupOpen(null, trans('app.object_match_scores')) !!}
             <div class="scores">
@@ -94,7 +89,7 @@
                         url: contentify.baseUrl + 'admin/matches/scores/store',
                         type: 'POST',
                         data: {
-                            match_id:       "{!! $model->id !!}",
+                            matche_id:       "{!! $model->id !!}",
                             map_id:         $('#map_id').val(),
                             left_score:     $('input[name=left_score]').val(),
                             right_score:    $('input[name=right_score]').val(),

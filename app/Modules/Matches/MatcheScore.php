@@ -2,45 +2,45 @@
 
 namespace App\Modules\Matches;
 
-use BaseModel;
+use Illuminate\Database\Eloquent\Model;
+use App\Modules\Maps\Map;
 
-/**
- * @property int $left_score
- * @property int $right_score
- * @property int $map_id
- * @property int $match_id
- * @property \App\Modules\Matches\Matche $matche,
- * @property \App\Modules\Maps\Map $map
- */
-class MatcheScore extends BaseModel
+class MatcheScore extends Model
 {
 
-    protected $fillable = ['left_score', 'right_score', 'map_id', 'match_id'];
-	
-	protected $table = 'match_scores';
+    protected $fillable = ['left_score', 'right_score', 'map_id', 'matche_id'];
+
+    protected $table = 'match_scores';
 
     protected $rules = [
-        'left_score'    => 'required|integer|min:0',
-        'right_score'   => 'required|integer|min:0',
-        'match_id'      => 'required|integer',
+        'left_score'    => 'required|integer|min:0|max:20',
+        'right_score'   => 'required|integer|min:0|max:20',
+        'matche_id'      => 'required|integer',
         'map_id'        => 'required|integer',
     ];
 
-    public static $relationsData = [
-        'match' => [self::BELONGS_TO, 'App\Modules\Matches\Matche'],
-        'map'   => [self::BELONGS_TO, 'App\Modules\Maps\Map'],
-    ];
+    public function match()
+    {
+        return $this->belongsTo(Matche::class, 'matche_id');
+    }
+
+    public function map()
+    {
+        return $this->belongsTo(Map::class, 'map_id');
+    }
 
     public static function boot()
     {
-        self::saved(function(self $matcheScore)
+        parent::boot();
+
+        static::saved(function($matcheScore)
         {
-            $matcheScore->matche->updateScore();
+            $matcheScore->match->updateScore();
         });
 
-        self::deleted(function(self $matcheScore)
+        static::deleted(function($matcheScore)
         {
-            $matcheScore->matche->updateScore();
+            $matcheScore->match->updateScore();
         });
     }
 }

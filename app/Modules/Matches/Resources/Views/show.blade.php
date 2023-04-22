@@ -1,4 +1,4 @@
-<h1 class="page-title">{{ trans_object('matche') }}</h1>
+<h1 class="page-title">{{ trans_object('match') }}</h1>
 
 <div class="overview clearfix">
 @section('matches-matche-overview')
@@ -84,7 +84,20 @@
     </table>
 </div>
 
-
+@if ($matche->matche_scores)
+    <div class="scores clearfix">
+    @section('matches-matche-scores')
+        @foreach ($matche->matche_scores as $matcheScore)
+            <div class="item">
+                @if ($matcheScore->map->image)
+                    <img src="{!! $matcheScore->map->uploadPath().$matcheScore->map->image !!}" alt="{{ $matcheScore->map->title }}">
+                @endif
+                <span>{{ $matcheScore->map->title }}: {{ $matcheScore->left_score }}:{{ $matcheScore->right_score }}</span>
+            </div>
+        @endforeach
+    @show
+    </div>
+@endif
 
 @if ($matche->text)
     <p>
