@@ -3,7 +3,6 @@
         <h2 id="partner-section-{{ $partner->slug }}">{{ $partner->title }}</h2>
     </header>
     <div class="content">
-        @section('partners-partner-image')
             @if ($partner->image)
                 <div class="image">
                     <img class="img-responsive" src="{!! $partner->uploadPath().$partner->image !!}" alt="{{ $partner->title }}">
