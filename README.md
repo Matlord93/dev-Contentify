@@ -38,7 +38,7 @@ Clone this repository via git and switch to the `3.2-dev` branch.
 Via console, go to the Contentify directory and run `php composer.phar install`. 
 Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
-officially support PHP 8.
+officially support PHP 8.1 and 8.2.
 
 **Changes**: [Changelog.md](changelog.md)
 
