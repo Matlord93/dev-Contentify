@@ -28,7 +28,7 @@ use InterImage;
  * @property int                            $access_counter
  * @property int                            $creator_id
  * @property int                            $updater_id
- * @property \App\Modules\Matches\Match[]   $matches
+ * @property \App\Modules\Matches\Matche[]   $matches
  * @property \User[]                        $members
  * @property \App\Modules\Teams\TeamCat     $teamCat
  * @property \App\Modules\Countries\Country $country
@@ -56,9 +56,7 @@ class Team extends BaseModel
     ];
 
     public static $relationsData = [
-        'matches'   => [
-            self::HAS_MANY, 'App\Modules\Matches\Match1', 'foreignKey' => 'left_team_id', 'dependency' => true
-        ],
+        'matches'   => [self::HAS_MANY, 'App\Modules\Matches\Matche', 'foreignKey' => 'left_team_id', 'dependency' => true],
         'members'   => [self::BELONGS_TO_MANY, 'User'],
         'teamCat'   => [self::BELONGS_TO, 'App\Modules\Teams\TeamCat'],
         'country'   => [self::BELONGS_TO, 'App\Modules\Countries\Country'],
