@@ -18,8 +18,7 @@
         @if ($partner->url)
             <a class="btn btn-default" href="{{ url('partners/url/'.$partner->id) }}" title="{{ trans('app.website') }}" target="_blank">{!! HTML::fontIcon('link') !!} {{ $partner->url }}</a>
         @endif
-
-        @section('partners-partner-socials')
+		
             @if ($partner->facebook)
                 <?php $url = filter_var($partner->facebook, FILTER_VALIDATE_URL) ? $partner->facebook : 'https://www.facebook.com/'.$partner->facebook ?>
                 <a class="btn btn-default" href="{{ $url }}" target="_blank" title="Facebook">{!! HTML::fontIcon('facebook') !!}</a>
