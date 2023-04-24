@@ -24,7 +24,7 @@ class CustomPagesController extends FrontController
      * @return void
      * @throws \Exception
      */
-    public function show(int $id, string $slug = null, $isImpressum = false)
+    public function show(int $id = null, string $slug = null, $isImpressum = false)
     {
         if ($id) {
             $customPage = CustomPage::whereId($id)->published()->firstOrFail();
