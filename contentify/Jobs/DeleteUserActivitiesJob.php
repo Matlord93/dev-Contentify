@@ -2,22 +2,21 @@
 
 namespace Contentify\Jobs;
 
-use AbstractJob;
-use UserActivities;
+use ChrisKonnertz\Jobs\AbstractJob; // Import the AbstractJob class from the third-party package
+use Contentify\UserActivities; // Import the UserActivities class
 
 class DeleteUserActivitiesJob extends AbstractJob
 {
 
     /**
-     * {@inheritdoc}
+     * Execute the job.
+     *
+     * @param int|null $executedAt
+     * @return void
      */
-    protected $interval  = 1440; // 60 minutes * 24 = 24h (once per day)
-
-    /**
-     * {@inheritdoc}
-     */
-    public function run($executedAt)
+    public function run(?int $executedAt = null): void
     {
-        UserActivities::deleteOld();
+        $userActivities = new UserActivities(); // Create an instance of UserActivities class
+        $userActivities->deleteOld(); // Call the deleteOld() method on UserActivities instance
     }
 }
