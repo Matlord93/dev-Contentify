@@ -37,17 +37,17 @@ class AdminMatchesController extends BackController
                 trans('app.object_tournament')  => 'tournament_id',
                 trans('matches::played_at')     => 'played_at'
             ],
-            'tableRow' => function(Matche $matche)
+            'tableRow' => function(Matche $match)
             {
-                Hover::modelAttributes($matche, ['access_counter', 'creator', 'updated_at']);
+                Hover::modelAttributes($match, ['access_counter', 'creator', 'updated_at']);
 
                 return [
-                    $matche->id,
-                    raw($matche->state == 1 ? HTML::fontIcon('check') : HTML::fontIcon('times')),
-                    raw(Hover::pull().HTML::link('matches/'.$matche->id, $matche->left_team->title)),
-                    raw(HTML::link('matches/'.$matche->id, $matche->right_team->title)),
-                    $matche->tournament->short,
-                    $matche->played_at
+                    $match->id,
+                    raw($match->state == 1 ? HTML::fontIcon('check') : HTML::fontIcon('times')),
+                    raw(Hover::pull().HTML::link('matches/'.$match->id, $match->left_team->title)),
+                    raw(HTML::link('matches/'.$match->id, $match->right_team->title)),
+                    $match->tournament->short,
+                    $match->played_at
                 ];
             }
         ]);
@@ -62,8 +62,8 @@ class AdminMatchesController extends BackController
         $this->layout->page->with('maps', $maps);
     }
 	
-	public function callAction($method, $matche) 
+	public function callAction($method, $match) 
     { 
-        return parent::callAction($method, array_values($matche));
+        return parent::callAction($method, array_values($match));
      }
 }
