@@ -11,7 +11,6 @@
         @show
 
         <p>
-        @section('partners-partner-text')
             {!! $partner->text !!}
         @show
         </p>
