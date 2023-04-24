@@ -10,6 +10,7 @@ use Request;
 use Contentify\Uploader;
 use File;
 use InterImage;
+use Redirect;
 
 
 /**
