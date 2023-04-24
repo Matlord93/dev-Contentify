@@ -39,4 +39,9 @@ class AdminDownloadCatsController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $download_cat) 
+    { 
+        return parent::callAction($method, array_values($download_cat));
+    }
 }

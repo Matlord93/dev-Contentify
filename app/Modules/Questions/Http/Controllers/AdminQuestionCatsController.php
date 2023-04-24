@@ -39,4 +39,9 @@ class AdminQuestionCatsController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $question_cat) 
+    { 
+        return parent::callAction($method, array_values($question_cat));
+    }
 }
