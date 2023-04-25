@@ -132,4 +132,24 @@ class Team extends BaseModel
             })->save($filePath.'80/'.$filename);
         }
     }
+	
+	public function deleteImage(string $fieldName)
+{
+    $filePath = public_path().'/uploads/teams/';
+    $filename = $this->$fieldName;
+    
+    if (File::exists($filePath.$filename)) {
+        File::delete($filePath.$filename);
+    }
+
+    if ($fieldName == 'image') {
+        if (File::exists($filePath.'80/'.$filename)) {
+            File::delete($filePath.'80/'.$filename);
+        }
+    }
+
+    $this->$fieldName = null;
+    $this->save();
+}
+
 }
