@@ -9,6 +9,7 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
         ['as' => 'galleries.restore', 'uses' => 'AdminGalleriesController@restore']
     );
     ModuleRoute::post('admin/galleries/search', 'AdminGalleriesController@search');
+
 	
 });
 

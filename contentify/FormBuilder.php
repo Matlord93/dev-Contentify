@@ -723,8 +723,8 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $title The title of the input element
      * @return string
      */
-    public function smartImageFile(string $name = 'image', string $title = null) : string
-    {
+public function smartImageFile(string $name = 'images', string $title = null) : string
+{
         if (! $title) {
             $title = trans('app.image');
         }
@@ -738,16 +738,16 @@ class FormBuilder extends OriginalFormBuilder
                 .'</div>';
         }
 
-        $partial = self::smartGroupOpen($name, $title)
-            .$prev
-            .'<div class="input-group">'
-            .self::file($name, ['class' => 'form-control', 'data-info' => trans('app.save_to_del')])
-            .'<span class="input-group-addon delete">'.HTML::fontIcon('trash').'</span>'
-            .'</div>'
-            .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
-            .self::smartGroupClose();
-        return $partial;
-    }
+    $partial = self::smartGroupOpen($name, $title)
+        .$prev
+        .'<div class="input-group">'
+        .self::file($name, ['class' => 'form-control', 'data-info' => trans('app.save_to_del'), 'multiple'])
+        .'<span class="input-group-addon delete">'.HTML::fontIcon('trash').'</span>'
+        .'</div>'
+        .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
+        .self::smartGroupClose();
+    return $partial;
+}
 
     /**
      * Create HTML code for an icon upload input element.
