@@ -6,7 +6,6 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::resource('admin/images', 'AdminImagesController');
     ModuleRoute::post('admin/images/search', 'AdminImagesController@search');
 });	
-ModuleRoute::post('images/upload', 'AdminImagesController@index')->name('image.store');
 
 ModuleRoute::get('editor-images', 'EditorImagesController@index');
 ModuleRoute::post('editor-images', 'EditorImagesController@search');

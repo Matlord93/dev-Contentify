@@ -723,31 +723,33 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $title The title of the input element
      * @return string
      */
-    public function smartImageFile(string $name = 'image', string $title = null) : string
-    {
-        if (! $title) {
-            $title = trans('app.image');
-        }
-
-        $prev = '';
-        $value = $this->getDefaultValue($name, null);
-        if ($value and method_exists($this->model, 'uploadPath')) {
-            $path = $this->model->uploadPath().$value;
-            $prev = '<div class="image-upload-prev">'
-                .'<a href="'.$path.'" target="_blank">'.HTML::image($path, $title).'</a>'
-                .'</div>';
-        }
-
-        $partial = self::smartGroupOpen($name, $title)
-            .$prev
-            .'<div class="input-group">'
-            .self::file($name, ['class' => 'form-control', 'data-info' => trans('app.save_to_del'), 'multiple'])
-            .'<span class="input-group-addon delete">'.HTML::fontIcon('trash').'</span>'
-            .'</div>'
-            .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
-            .self::smartGroupClose();
-        return $partial;
+public function smartImageFile(string $name = 'image', string $title = null) : string
+{
+    if (! $title) {
+        $title = trans('app.image');
     }
+
+    $prev = '';
+    $value = $this->getDefaultValue($name, null);
+    if ($value and method_exists($this->model, 'uploadPath')) {
+        $path = $this->model->uploadPath().$value;
+        $prev = '<div class="image-upload-prev">'
+            .'<a href="'.$path.'" target="_blank">'.HTML::image($path, $title).'</a>'
+            .'</div>';
+    }
+
+    $partial = self::smartGroupOpen($name, $title)
+        .$prev
+        .'<div class="input-group">'
+        .self::file($name, ['class' => 'form-control', 'data-info' => trans('app.save_to_del'), 'multiple' => true])
+        .'<span class="input-group-addon delete">'.HTML::fontIcon('trash').'</span>'
+        .'</div>'
+        .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
+        .self::smartGroupClose();
+    return $partial;
+}
+
+
 
     /**
      * Create HTML code for an icon upload input element.

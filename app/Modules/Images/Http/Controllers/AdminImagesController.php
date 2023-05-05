@@ -3,11 +3,9 @@
 namespace App\Modules\Images\Http\Controllers;
 
 use App\Modules\Images\Image;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use BackController;
 use ModelHandlerTrait;
 use Request;
-use Illuminate\Http\Request as IlluminateRequest;
 
 class AdminImagesController extends BackController
 {

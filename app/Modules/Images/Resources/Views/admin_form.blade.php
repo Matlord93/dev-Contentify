@@ -5,10 +5,11 @@
 @else
     {!! Form::open(['url' => 'admin/images', 'files' => true]) !!}
 @endif
-
     {!! Form::smartTags('tags', 'Tags') !!}
 
-    {!! Form::smartImageFile('images', 'Images') !!}
+    {!! Form::smartImageFile('image', 'Image') !!}
+
+    <hr>
 
     {!! Form::smartSelectRelation('gallery', 'Gallery', $modelClass, null, true, true) !!}
 

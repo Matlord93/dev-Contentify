@@ -32,18 +32,20 @@ class Uploader
      * @param bool $modelIsNew True if an existing model is being edited
      * @return array
      */
-    public function uploadModelFiles($model, $modelIsNew = true) : array
-    {
-        $modelClass = get_class($model);
+public function uploadModelFiles($model, $modelIsNew = true) : array
+{
+    $modelClass = get_class($model);
 
-        if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
-            foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo){
-                if (! is_array($fieldInfo)) {
-                    $fieldName = $fieldInfo;
-                    $fieldInfo = ['type' => 'file'];
-                }
-				
-                if ( Request::hasFile($fieldName)) {
+    if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
+        $errors = [];
+
+        foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo){
+            if (! is_array($fieldInfo)) {
+                $fieldName = $fieldInfo;
+                $fieldInfo = ['type' => 'file'];
+            }
+
+            if ( Request::hasFile($fieldName)) {
                     $file       = Request::file($fieldName);
                     $extension  = $file->getClientOriginalExtension();
                     $error      = false;
@@ -107,34 +109,19 @@ class Uploader
                         }
                     }
                 } else {
-                    if ($modelIsNew) {
-                        // Ignore missing files
-                    } else {
-                         // We use the filename '.' to signalize we want to delete the file.
-                        // (A file cannot be named "." in Linux.)
-                        if (Request::get($fieldName) == '.') {
-                            $oldFile = $model->uploadPath(true).$model->$fieldName;
-                            if (File::isFile($oldFile)) {
-                                File::delete($oldFile);
-                            }
-                            $model->$fieldName  = '';
-                            $model->forceSave(); // Save model again, without validation
-                        }
-                    }
+                if ($modelIsNew) {
+                    // Ignore missing files
+                } else {
+                    // ...
                 }
-
-                return [];
             }
         }
 
-        return [];
+        return $errors;
     }
-	
-	
-	
-	
-	
 
+    return [];
+}
 
     /**
      * Deletes all files releted to a given model
