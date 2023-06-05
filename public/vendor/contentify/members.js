@@ -17,7 +17,7 @@ $(document).ready(function()
                                 $.ajax({
                                     url: contentify.baseUrl + 'admin/members/delete/' + userId + '/' + id,
                                     type: 'DELETE'
-                                }).success(function(data)
+                                }).done(function(data)
                                 {
                                     render($td, userId, JSON.parse(data));
                                 }).fail(function(response)
@@ -33,7 +33,7 @@ $(document).ready(function()
                                 $.ajax({
                                     url: contentify.baseUrl + 'admin/members/edit/' + userId + '/' + id,
                                     type: 'GET'
-                                }).success(function(data)
+                                }).done(function(data)
                                 {
                                     var $footer = $('<button>').text(contentify.translations.save).click(function(event)
                                     {
@@ -70,7 +70,7 @@ $(document).ready(function()
                     $.ajax({
                         url: contentify.baseUrl + 'admin/members/add/' + userId,
                         type: 'GET'
-                    }).success(function(data)
+                    }).done(function(data)
                     {
                         if (data) {
                             var $footer = $('<button>').text(contentify.translations.add).click(function()
@@ -80,7 +80,7 @@ $(document).ready(function()
                                 $.ajax({
                                     url: contentify.baseUrl + 'admin/members/add/' + userId + '/' + teamId,
                                     type: 'POST'
-                                }).success(function(data)
+                                }).done(function(data)
                                 {
                                     render($td, userId, JSON.parse(data));
                                 }).fail(function(response)
