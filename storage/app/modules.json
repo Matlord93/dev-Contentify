@@ -160,16 +160,6 @@
         "search": [
             "events"
         ],
-        "admin-nav": [
-            {
-                "icon": "calendar",
-                "category": 1,
-                "position": 4
-            }
-        ],
-        "id": 1412125308,
-        "enabled": true,
-        "order": 9001
     },
     "Example": {
         "basename": "Example",

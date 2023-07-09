@@ -48,4 +48,9 @@ class AdminServersController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $server) 
+    { 
+        return parent::callAction($method, array_values($server));
+    }
 }

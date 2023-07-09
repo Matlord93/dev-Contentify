@@ -416,7 +416,7 @@ abstract class BaseController extends Controller
      */
     public function hasAccessRead() : bool
     {
-        return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_READ));
+        return (user() and user()->hasAccess(strtolower($this->moduleName)));
     }
 
     /**
@@ -426,7 +426,7 @@ abstract class BaseController extends Controller
      */
     public function hasAccessCreate() : bool
     {
-        return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_CREATE));
+        return (user() and user()->hasAccess(strtolower($this->moduleName)));
     }
 
     /**
@@ -436,7 +436,7 @@ abstract class BaseController extends Controller
      */
     public function hasAccessUpdate() : bool
     {
-        return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_UPDATE));
+        return (user() and user()->hasAccess(strtolower($this->moduleName)));
     }
 
     /**

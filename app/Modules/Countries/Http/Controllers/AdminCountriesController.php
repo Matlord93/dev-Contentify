@@ -46,4 +46,9 @@ class AdminCountriesController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $country) 
+    { 
+        return parent::callAction($method, array_values($country));
+    }
 }

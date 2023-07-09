@@ -39,4 +39,9 @@ class AdminSlideCatsController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $slide_cat) 
+    { 
+        return parent::callAction($method, array_values($slide_cat));
+    }
 }

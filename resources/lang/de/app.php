@@ -22,7 +22,7 @@ return [
      */
     'spam_protection' => 'Um Spam vorzubeugen, müssen Sie einige Sekunden warten, ehe Sie dieses Formular absenden können.',
     'debug_warning'   => 'Warnung: Der Debug-Modus ist aktiviert, obwohl dies ein Produktivserver zu sein scheint!',
-    'space_warning'   => 'Es ist kaum noch freier Festplattenspeicher vorhanden (:0). Bitte den Cache leeren, den Speicher vergrößern oder unseren Support kontaktieren.',
+    'space_warning'   => 'Es ist kaum noch freier Festplattenspeicher vorhanden. Bitte den Cache leeren, den Speicher vergrößern oder unseren Support kontaktieren.',
 
     /*
      * Errors
@@ -43,13 +43,13 @@ return [
     /*
      * Auto CRUD handling (and related stuff)
      */
-    'created'       => ':0 erstellt.',
-    'updated'       => ':0 aktualisiert.',
-    'deleted'       => ':0 gelöscht.',
-    'restored'      => ':0 wiederhergestellt.',
-    'list_empty'    => 'Bitte erstellen Sie mindestens ein/eine ":0", ehe Sie fortfahren.',
+    'created'       => 'erstellt.',
+    'updated'       => 'aktualisiert.',
+    'deleted'       => 'gelöscht.',
+    'restored'      => 'wiederhergestellt.',
+    'list_empty'    => 'Bitte erstellen Sie mindestens ein Team, ehe Sie fortfahren.',
     'invalid_image' => 'Ungültige Bilddatei',
-    'bad_extension' => "Das Hochladen von Dateien mit der Endung ':0' ist nicht erlaubt.",
+    'bad_extension' => "Das Hochladen von Dateien mit der Endung ist nicht erlaubt.",
     'delete_error'  => "Fehler: Dieses Objekt besitzt :0 Abhängigkeiten (Typ: ':1')! Bitte diese zunächst aufheben.",
 
     /*
@@ -136,8 +136,8 @@ return [
      */
     'comments'              => 'Kommentare',
     'comments_disabled'     => 'Die Kommentarfunktion wurde für diesen Inhalt deaktiviert.',
-    'comment_create_fail'   => 'Kann Kommentar nicht erstellen. :0',
-    'comment_update_fail'   => 'Kann Kommentar nicht editieren. :0',
+    'comment_create_fail'   => 'Kann Kommentar nicht erstellen.',
+    'comment_update_fail'   => 'Kann Kommentar nicht editieren.',
     'enable_comments'       => 'Kommentare aktivieren',
 
     /*

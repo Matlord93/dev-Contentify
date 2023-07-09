@@ -45,4 +45,9 @@ class AdminAdvertsController extends BackController
             }
         ]);
     }
+	
+	public function callAction($method, $advert) 
+    { 
+        return parent::callAction($method, array_values($advert));
+    }
 }

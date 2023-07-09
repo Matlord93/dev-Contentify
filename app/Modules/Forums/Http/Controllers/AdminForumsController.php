@@ -112,4 +112,9 @@ class AdminForumsController extends BackController
 
         return $response;
     }
+	
+	public function callAction($method, $forum) 
+    { 
+        return parent::callAction($method, array_values($forum));
+    }
 }

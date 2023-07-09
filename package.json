@@ -1,13 +1,14 @@
 {
-    "name": "contentify",
-    "description": "Contentify Esports CMS",
-    "author": "Contentify.org",
-    "main": "Gruntfile.js",
     "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
     "devDependencies": {
-        "grunt": "^1.3.0",
-        "grunt-contrib-less": "^1.0.1",
-        "grunt-contrib-watch": "^0.6.1",
-        "jit-grunt": "^0.9.1"
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "vite": "^4.0.0"
     }
 }

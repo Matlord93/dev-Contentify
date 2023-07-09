@@ -220,5 +220,6 @@ class UserActivities
     {
         UserActivity::truncate();
     }
+
 }
 

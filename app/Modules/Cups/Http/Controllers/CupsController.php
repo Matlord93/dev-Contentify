@@ -36,7 +36,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
                 trans('app.title')          => 'title',
                 trans('app.slots')          => 'slots',
                 trans('app.object_game')    => 'game_id',
-                trans('app.date')           => 'starts_at'
+                trans('app.date')           => 'start_at'
             ],
             'tableRow'      => function(Cup $cup)
             {
