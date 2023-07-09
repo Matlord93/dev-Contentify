@@ -1,35 +1,35 @@
 <h1 class="page-title">{{ trans_object('match') }}</h1>
 
 <div class="overview clearfix">
-@section('matches-matche-overview')
+@section('matches-match-overview')
     <div class="left">
-        @if ($matche->left_team->image)
-            <img src="{!! $matche->left_team->uploadPath().$matche->left_team->image !!}" alt="{{ $matche->left_team->title }}">
+        @if ($match->left_team->image)
+            <img src="{!! $match->left_team->uploadPath().$match->left_team->image !!}" alt="{{ $match->left_team->title }}">
         @else
-            <img src="{!! asset('img/logo_180.png') !!}" alt="{{ $matche->left_team->title }}">
+            <img src="{!! asset('img/logo_180.png') !!}" alt="{{ $match->left_team->title }}">
         @endif
         <div class="team-name">
             <img src="{{ asset('uploads/countries/eu.png') }}"> 
-            <a href="{{ url('/teams/'.$matche->left_team->id.'/'.$matche->left_team->slug) }}">{{ $matche->left_team->title }}</a>
+            <a href="{{ url('/teams/'.$match->left_team->id.'/'.$match->left_team->slug) }}">{{ $match->left_team->title }}</a>
         </div>
     </div>
     <div class="mid">
-        {!! $matche->scoreCode() !!}
+        {!! $match->scoreCode() !!}
     </div>
     <div class="right">
-        @if ($matche->right_team->image)
-            <img src="{!! $matche->right_team->uploadPath().$matche->right_team->image !!}" alt="{{ $matche->right_team->title }}">
+        @if ($match->right_team->image)
+            <img src="{!! $match->right_team->uploadPath().$match->right_team->image !!}" alt="{{ $match->right_team->title }}">
         @else
-            <img src="{!! asset('img/default/no_opponent.png') !!}" alt="{{ $matche->right_team->title }}">
+            <img src="{!! asset('img/default/no_opponent.png') !!}" alt="{{ $match->right_team->title }}">
         @endif
         <div class="team-name">
-            @if ($matche->right_team->country->icon)
-                <img src="{{ $matche->right_team->country->uploadPath().$matche->right_team->country->icon }}">
+            @if ($match->right_team->country->icon)
+                <img src="{{ $match->right_team->country->uploadPath().$match->right_team->country->icon }}">
             @endif
-            @if ($matche->right_team->url)
-                 <a href="{{ url($matche->right_team->url) }}" target="_blank">{{ $matche->right_team->title }}</a>
+            @if ($match->right_team->url)
+                 <a href="{{ url($match->right_team->url) }}" target="_blank">{{ $match->right_team->title }}</a>
             @else
-                {{ $matche->right_team->title }}
+                {{ $match->right_team->title }}
             @endif
         </div> 
     </div>
@@ -38,45 +38,45 @@
 <div class="details">
     <table class="table horizontal">
         <tbody>
-        @section('matches-matche-details')
+        @section('matches-match-details')
             <tr>
                 <th>{!! trans('app.date') !!}</th>
-                <td>{{ $matche->played_at->dateTime() }} - {{ $matche::$states[$matche->state] }}</td>
+                <td>{{ $match->played_at->dateTime() }} - {{ $match::$states[$match->state] }}</td>
             </tr>
             <tr>
                 <th>{!! trans('app.object_game') !!}</th>
-                <td>{{ $matche->game->title }}</td>
+                <td>{{ $match->game->title }}</td>
             </tr>
             <tr>
                 <th>{!! trans('app.object_tournament') !!}</th>
                 <td>
-                    @if ($matche->tournament->url)
-                        <a href="{{ $matche->tournament->url }}" target="_blank"  title="{{ $matche->tournament->title }}">{{ $matche->tournament->title }}</a>
+                    @if ($match->tournament->url)
+                        <a href="{{ $match->tournament->url }}" target="_blank"  title="{{ $match->tournament->title }}">{{ $match->tournament->title }}</a>
                     @else
-                        {{ $matche->tournament->title }}
+                        {{ $match->tournament->title }}
                     @endif
                 </td>
             </tr>
-            @if ($matche->url)
+            @if ($match->url)
                 <tr>
                     <th>{!! trans('app.url') !!}</th>
-                    <td><a href="{{ $matche->url }}" target="_blank" title="{{ trans('app.object_matche')}} {{ trans('app.url') }}">{{ $matche->url }}</a></td>
+                    <td><a href="{{ $match->url }}" target="_blank" title="{{ trans('app.object_match')}} {{ trans('app.url') }}">{{ $match->url }}</a></td>
                 </tr>
             @endif
-            @if ($matche->broadcast)
+            @if ($match->broadcast)
                 <tr>
                     <th>{!! trans('matches::broadcast') !!}</th>
-                    <td><a href="{{ $matche->broadcast }}" target="_blank" title="{{ trans('matches::broadcast') }}">{{ $matche->broadcast }}</a></td>
+                    <td>><a href="{{ $match->broadcast }}" target="_blank" title="{{ trans('matches::broadcast') }}">{{ $match->broadcast }}</a></td>
                 </tr>
             @endif
-            @if ($matche->left_lineup or $matche->right_lineup)
+            @if ($match->left_lineup or $match->right_lineup)
                 <tr>
                     <th>{!! trans('matches::left_lineup') !!}</th>
-                    <td>{{ $matche->left_lineup }}</td>
+                    <td>{{ $match->left_lineup }}</td>
                 </tr>
                 <tr>
                     <th>{!! trans('matches::right_lineup') !!}</th>
-                    <td>{{ $matche->right_lineup }}</td>
+                    <td>{{ $match->right_lineup }}</td>
                 </tr>
             @endif
         @show
@@ -84,25 +84,25 @@
     </table>
 </div>
 
-@if ($matche->matche_scores)
+@if ($match->match_scores)
     <div class="scores clearfix">
-    @section('matches-matche-scores')
-        @foreach ($matche->matche_scores as $matcheScore)
+    @section('matches-match-scores')
+        @foreach ($match->match_scores as $matchScore)
             <div class="item">
-                @if ($matcheScore->map->image)
-                    <img src="{!! $matcheScore->map->uploadPath().$matcheScore->map->image !!}" alt="{{ $matcheScore->map->title }}">
+                @if ($matchScore->map->image)
+                    <img src="{!! $matchScore->map->uploadPath().$matchScore->map->image !!}" alt="{{ $matchScore->map->title }}">
                 @endif
-                <span>{{ $matcheScore->map->title }}: {{ $matcheScore->left_score }}:{{ $matcheScore->right_score }}</span>
+                <span>{{ $matchScore->map->title }}: {{ $matchScore->left_score }}:{{ $matchScore->right_score }}</span>
             </div>
         @endforeach
     @show
     </div>
 @endif
 
-@if ($matche->text)
+@if ($match->text)
     <p>
-        {!! $matche->text !!}
+        {!! $match->text !!}
     </p>
 @endif
 
-{!! Comments::show('matches', $matche->id) !!}
+{!! Comments::show('matches', $match->id) !!}

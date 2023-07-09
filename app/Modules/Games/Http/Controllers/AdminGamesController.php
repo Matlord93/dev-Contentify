@@ -42,8 +42,4 @@ class AdminGamesController extends BackController
             }
         ]);
     }
-	public function callAction($method, $game) 
-    { 
-        return parent::callAction($method, array_values($game));
-     }
 }

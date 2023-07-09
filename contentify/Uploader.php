@@ -37,13 +37,13 @@ class Uploader
         $modelClass = get_class($model);
 
         if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
-            foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo){
+            foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
                 if (! is_array($fieldInfo)) {
                     $fieldName = $fieldInfo;
                     $fieldInfo = ['type' => 'file'];
                 }
-				
-                if ( Request::hasFile($fieldName)) {
+
+                if (Request::hasFile($fieldName)) {
                     $file       = Request::file($fieldName);
                     $extension  = $file->getClientOriginalExtension();
                     $error      = false;
@@ -129,12 +129,6 @@ class Uploader
 
         return [];
     }
-	
-	
-	
-	
-	
-
 
     /**
      * Deletes all files releted to a given model
@@ -151,42 +145,6 @@ class Uploader
             $filePath = $model->uploadPath(true);
 
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
-                if (! is_array($fieldInfo)) {
-                    $fieldName = $fieldInfo;
-                    $fieldInfo = ['type' => 'file'];
-                }
-
-                File::delete($filePath.$model->$fieldName);
-
-                /*
-                 * Delete image thumbnails
-                 */
-                if (strtolower($fieldInfo['type']) == 'image' and isset($fieldInfo['thumbnails'])) {
-                    $thumbnails = $fieldInfo['thumbnails'];
-                    if (! is_array($thumbnails)) {
-                        $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
-                    }
-
-                    foreach ($thumbnails as $thumbnail) {
-                        $filename = $filePath.$thumbnail.'/'.$model->$fieldName;
-                        if (File::isFile($filename)) {
-                            File::delete($filename);
-                        }
-                    }
-                }
-            }
-        }
-    }
-	
-	    public function deleteModelFiles2($model)
-    {
-        $modelClass = get_class($model);
-
-        if ((! method_exists($modelClass, 'trashed') or ! $model->trashed())
-            and isset($modelClass::$fileHandling2) and sizeof($modelClass::$fileHandling2) > 0) {
-            $filePath = $model->uploadPath(true);
-
-            foreach ($modelClass::$fileHandling2 as $fieldName => $fieldInfo) {
                 if (! is_array($fieldInfo)) {
                     $fieldName = $fieldInfo;
                     $fieldInfo = ['type' => 'file'];

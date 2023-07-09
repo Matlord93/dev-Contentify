@@ -2,7 +2,7 @@
 
 namespace App\Modules\Matches\Http\Controllers;
 
-use App\Modules\Matches\Matche;
+use App\Modules\Matches\Match;
 use FrontController;
 use HTML;
 
@@ -11,7 +11,7 @@ class MatchesController extends FrontController
 
     public function __construct()
     {
-        $this->modelClass = Matche::class;
+        $this->modelClass = Match::class;
 
         parent::__construct();
     }
@@ -31,12 +31,12 @@ class MatchesController extends FrontController
                 trans('matches::right_team')    => 'right_team_id',
                 trans('matches::score')         => 'left_score'
             ],
-            'tableRow'      => function(Matche $matche)
+            'tableRow'      => function(Match $match)
             {
-                if ($matche->game->icon) {
+                if ($match->game->icon) {
                     $game = HTML::image(
-                        $matche->game->uploadPath().$matche->game->icon, 
-                        $matche->game->title, 
+                        $match->game->uploadPath().$match->game->icon, 
+                        $match->game->title, 
                         ['width' => 16, 'height' => 16]
                     );
                 } else {
@@ -44,10 +44,10 @@ class MatchesController extends FrontController
                 }
 
                 return [
-                    $matche->played_at,
+                    $match->played_at,
                     raw($game),
-                    raw(HTML::link(url('matches/'.$matche->id), $matche->right_team->title)),
-                    raw($matche->scoreCode())
+                    raw(HTML::link(url('matches/'.$match->id), $match->right_team->title)),
+                    raw($match->scoreCode())
                 ];
             },
             'actions'       => null,
@@ -56,22 +56,22 @@ class MatchesController extends FrontController
     }
 
     /**
-     * Show a matche
+     * Show a match
      *
-     * @param  int $id The ID of the matche
+     * @param  int $id The ID of the match
      * @return void
      * @throws \Exception
      */
     public function show(int $id)
     {
-        /** @var matche $matche */
-        $matche = matche::findOrFail($id);
+        /** @var Match $match */
+        $match = Match::findOrFail($id);
 
-        $matche->access_counter++;
-        $matche->save();
+        $match->access_counter++;
+        $match->save();
 
-        $this->title($matche->getTitle());
+        $this->title($match->getTitle());
 
-        $this->pageView('matches::show', compact('matche'));
+        $this->pageView('matches::show', compact('match'));
     }
 }

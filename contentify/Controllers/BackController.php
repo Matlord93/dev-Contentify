@@ -34,7 +34,7 @@ abstract class BackController extends BaseController
              * Count contact messages and if more than zero create link
              */
             $contactMessages = null;
-            if (user()->hasAccess('contact')) {
+            if (user()->hasAccess('contact', PERM_READ)) {
                 $count = DB::table('contact_messages')->whereNull('deleted_at')->where('new', true)->count();
                 
                 if ($count > 0) {

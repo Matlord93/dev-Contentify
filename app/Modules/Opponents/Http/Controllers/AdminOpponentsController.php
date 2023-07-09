@@ -58,8 +58,4 @@ class AdminOpponentsController extends BackController
 
         return $opponent->lineup;
     }
-	public function callAction($method, $opponent) 
-    { 
-        return parent::callAction($method, array_values($opponent));
-    }
 }

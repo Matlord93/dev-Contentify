@@ -40,9 +40,4 @@ class TeamsController extends FrontController
 
         $this->pageView('teams::show', compact('team'));
     }
-	
-		public function callAction($method, $slug) 
-    { 
-        return parent::callAction($method, array_values($slug));
-     }
 }

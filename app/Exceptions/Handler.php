@@ -1,81 +1,75 @@
-<?php
-
-namespace App\Exceptions;
+<?php namespace App\Exceptions;
 
 use ErrorException;
+use Exception;
 use Config;
 use Response;
 use View;
-use MsgException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
+use MsgException;
 
 class Handler extends ExceptionHandler
 {
-    /**
-     * A list of exception types with their corresponding custom log levels.
-     *
-     * @var array<class-string<\Throwable>, \Psr\Log\LogLevel::*>
-     */
-    protected $levels = [
-        //
-    ];
 
     /**
      * A list of the exception types that are not reported.
      *
-     * @var array<int, class-string<\Throwable>>
+     * @var array
      */
     protected $dontReport = [
         //
     ];
 
     /**
-     * A list of the inputs that are never flashed to the session on validation exceptions.
+     * A list of the inputs that are never flashed for validation exceptions.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $dontFlash = [
         'password',
         'password_confirmation',
     ];
 
-    public function report(Throwable $e)
+    /**
+     * Report or log an exception.
+     *
+     * @param  \Exception  $exception
+     * @return void
+     * @throws \Exception
+     */
+    public function report(Exception $exception)
     {
-        parent::report($e);
+        parent::report($exception);
     }
 
     /**
-     * Register the exception handling callbacks for the application.
+     * Render an exception into an HTTP response.
      *
-     * @return void
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Exception
      */
-    public function register()
-    {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
-    }
-	
-	    public function render($request, Throwable $e)
+    public function render($request, Exception $exception)
     {
         // Laravel wraps any exceptions thrown in views in an error exception so we have to unwrap it
         // @see https://github.com/laravel/ideas/issues/956
-        if ($e instanceof ErrorException and
-            $e->getPrevious() and $e->getPrevious() instanceof MsgException) {
+        if ($exception instanceof ErrorException and
+            $exception->getPrevious() and $exception->getPrevious() instanceof MsgException) {
             /* @var $innerException MsgException */
-            $innerException = $e->getPrevious();
+            $innerException = $exception->getPrevious();
             return $innerException->render($request);
         }
 
         if (! Config::get('app.debug')) { // If we are in debug mode we do not want to override Laravel's error output
-            if ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
                 return Response::make(View::make('error_not_found'), 404);
             }
 
             return Response::make(View::make('error'), 500);
         }
 
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 }

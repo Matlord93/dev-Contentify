@@ -27,7 +27,6 @@ class FormGenerator
      */
     protected $fileHandling;
 
-
     /**
      * The name of the module
      *

@@ -223,10 +223,4 @@ class PostsController extends FrontController
 
         $this->pageView('forums::show_user_posts', compact('forumPosts'));
     }
-	
-		public function callAction($method, $id) 
-    { 
-        return parent::callAction($method, array_values($id));
-		
-     }
 }

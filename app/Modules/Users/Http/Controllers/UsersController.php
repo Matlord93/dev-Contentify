@@ -17,25 +17,25 @@ class UsersController extends FrontController implements GlobalSearchInterface
     public function __construct()
     {
         $this->modelClass = \User::class;
+
         parent::__construct();
     }
 
     public function index()
     {
         $this->indexPage([
-		
             'buttons'   => null,
             'tableHead' => [
+                trans('app.id')                     => 'id',
                 trans('app.username')               => 'username',
                 trans('app.name')                   => 'first_name',
                 trans('app.object_registration')    => 'created_at',
                 trans('users::last_login')          => 'last_login',
             ],
             'tableRow' => function(User $user)
-			
             {
                 return [
-					
+                    $user->id,
                     raw(link_to('users/'.$user->id.'/'.$user->slug, $user->username)),
                     $user->getRealName(),
                     $user->created_at,
@@ -46,9 +46,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
             'searchFor' => 'username',
             'permaFilter' => function(Builder $users)
             {
-				
                 return $users->where('id', '!=', User::DAEMON_USER_ID); // Do not keep the daemon user
-				
             }
         ], 'front');
     }
@@ -86,7 +84,6 @@ class UsersController extends FrontController implements GlobalSearchInterface
      */
     public function edit(int $id)
     {
-		
         if ((! user()) or (user()->id != $id and (! $this->hasAccessUpdate()))) {
             $this->alertError(trans('app.access_denied'));
             return;
@@ -236,13 +233,4 @@ class UsersController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-	
-  public function callAction($method, $user)
- 
-    {
- 
-        return parent::callAction($method, array_values($user));
- 
-    }
-	
 }

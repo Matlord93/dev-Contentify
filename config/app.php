@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Facade;
-
 return [
 
     /*
@@ -9,9 +7,9 @@ return [
     | Application Name
     |--------------------------------------------------------------------------
     |
-    | This value is the name of your application. This value is used when the
-    | framework needs to place the application's name in a notification or
-    | any other location as required by the application or its packages.
+    | This value is the name of your web application.
+    |
+    | @deprecated Will be stored in the database, not here in this file
     |
     */
 
@@ -24,10 +22,9 @@ return [
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
+    | services your application utilizes. Set this in your ".env" file.
     |
     */
-
     'env' => env('APP_ENV', 'production'),
 
     /*
@@ -42,8 +39,7 @@ return [
     */
 
     'debug' => (bool) env('APP_DEBUG', true),
-	
-	
+
     /*
     |--------------------------------------------------------------------------
     | CMS Version
@@ -53,7 +49,7 @@ return [
     |
     */
 
-    'version' => '3.2-dev',
+    'version' => '3.1',
 
     /*
     |--------------------------------------------------------------------------
@@ -66,11 +62,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost/contentify'),
 
-    'asset_url' => env('ASSET_URL'),
-	
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Application Pagination Settings
     |--------------------------------------------------------------------------
@@ -87,9 +81,10 @@ return [
     | Application Timezone
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the default timezone for your application, which
+    | Here you should specify the default timezone for your application, which
     | will be used by the PHP date and date-time functions. We have gone
     | ahead and set this to a sensible default for you out of the box.
+    | Example value for CET: 'Europe/Berlin'
     |
     */
 
@@ -133,8 +128,8 @@ return [
     */
 
     'faker_locale' => 'en_US',
-	
-	 /*
+
+    /*
     |--------------------------------------------------------------------------
     | Application Currency
     |--------------------------------------------------------------------------
@@ -158,11 +153,11 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', '12345678901234567890123456789012'),
 
     'cipher' => 'AES-256-CBC',
-	
-	/*
+
+    /*
     |--------------------------------------------------------------------------
     | Google ReCAPTCHA Secret
     |--------------------------------------------------------------------------
@@ -173,24 +168,6 @@ return [
     */
 
     'recaptcha_secret' => '',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Maintenance Mode Driver
-    |--------------------------------------------------------------------------
-    |
-    | These configuration options determine the driver used to determine and
-    | manage Laravel's "maintenance mode" status. The "cache" driver will
-    | allow maintenance mode to be controlled across multiple machines.
-    |
-    | Supported drivers: "file", "cache"
-    |
-    */
-
-    'maintenance' => [
-        'driver' => 'file',
-        // 'store'  => 'redis',
-    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -232,20 +209,16 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
-        //App\Providers\AuthServiceProvider::class, // We do not use Laravel's authentication
-        // App\Providers\BroadcastServiceProvider::class, // Deactivated per Laravel's default
-		App\Providers\ConfigServiceProvider::class, // Custom service provider
+        //App\Providers\AuthServiceProvider::class // We do not use Laravel's authentication
+        //App\Providers\BroadcastServiceProvider::class, // Deactivated per Laravel's default
+        App\Providers\ConfigServiceProvider::class, // Custom service provider
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-		
-		 /*
+
+        /*
          * CMS service providers...
          */
         Contentify\ServiceProviders\HtmlServiceProvider::class,
@@ -258,15 +231,15 @@ return [
         Contentify\ServiceProviders\RatingsServiceProvider::class,
         Contentify\ServiceProviders\UserActivitiesServiceProvider::class,
         Contentify\ServiceProviders\ModelHandlerServiceProvider::class,
-		
+
         /*
          * Vendor service providers...
          */
         Contentify\Vendor\Rss\RssServiceProvider::class,
         ChrisKonnertz\Jobs\Integration\JobsServiceProvider::class,
-        Matlord\Modules\ModulesServiceProvider::class,
+        Caffeinated\Modules\ModulesServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
-        intervention\Image\ImageServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         Invisnik\LaravelSteamAuth\SteamServiceProvider::class,
     ],
 
@@ -366,7 +339,7 @@ return [
         'Reminder'              => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'InterImage'            => Intervention\Image\Facades\Image::class,
         'ValidatingTrait'       => Watson\Validating\ValidatingTrait::class,
-        'Module'                => Matlord\Modules\Facades\Module::class,
+        'Module'                => Caffeinated\Modules\Facades\Module::class,
     ],
 
 ];

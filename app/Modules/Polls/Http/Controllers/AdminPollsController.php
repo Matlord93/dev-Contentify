@@ -42,9 +42,4 @@ class AdminPollsController extends BackController
             }
         ]);
     }
-	
-	public function callAction($method, $poll) 
-    { 
-        return parent::callAction($method, array_values($poll));
-    }
 }

@@ -221,7 +221,7 @@ class FormBuilder extends OriginalFormBuilder
         } else {
             $options['class'] = '';
         }
-        $options['class'] .= 'numeric-input form-control';
+        $options['class'] .= 'numeric-input';
 
         #$partial = self::input('text', $name, $value, $options);
         $partial = self::number($name, $value, $options);
@@ -244,7 +244,7 @@ class FormBuilder extends OriginalFormBuilder
         } else {
             $options['class'] = '';
         }
-        $options['class'] .= 'url form-control';
+        $options['class'] .= 'url';
 
         if (! isset($options['placeholder'])) {
             $options['placeholder'] = 'https://www.example.com';
@@ -373,13 +373,6 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartText(string $name, string $title, string $default = null, $options = []) : string
     {
-		if (isset($options['class'])) {
-            $options['class'] = '';
-        } else {
-            $options['class'] = '';
-        }
-        $options['class'] .= 'form-control';
-		
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
             .self::text($name, $value, $options)
@@ -395,21 +388,15 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartEmail(string $name = 'email', string $title = null, string $default = null, array $options = []) : string
+    public function smartEmail(string $name = 'email', string $title = null, string $default = null) : string
     {
         if (! $title) {
             $title = trans('app.email');
         }
-		if (isset($options['class'])) {
-            $options['class'] = '';
-        } else {
-            $options['class'] = '';
-        }
-        $options['class'] .= 'form-control';
 
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
-            .self::email($name, $value, $options)
+            .self::email($name, $value)
             .self::smartGroupClose();
         return $partial;
     }
@@ -422,21 +409,15 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartUrl(string $name = 'url', string $title = null, string $default = null, array $options = []) : string
+    public function smartUrl(string $name = 'url', string $title = null, string $default = null) : string
     {
         if (! $title) {
             $title = trans('app.url');
         }
-		if (isset($options['class'])) {
-            $options['class'] = ' ';
-        } else {
-            $options['class'] = '';
-        }
-        $options['class'] .= 'form-control';
 
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
-            .self::url($name, $value, $options)
+            .self::url($name, $value)
             .self::smartGroupClose();
         return $partial;
     }
@@ -476,12 +457,6 @@ class FormBuilder extends OriginalFormBuilder
         string $default = null
     ) : string
     {
-		if (isset($options['class'])) {
-            $options['class'] = ' ';
-        } else {
-            $options['class'] = '';
-        }
-        $options['class'] .= 'form-control';
         $value = self::getDefaultValue($name, $default);
 
         if (! $title) {
@@ -505,7 +480,7 @@ class FormBuilder extends OriginalFormBuilder
                 .'</div>';
         } else {
             $partial  = self::smartGroupOpen($name, $title)
-                .self::textarea($name, $value, $options)
+                .self::textarea($name, $value)
                 .self::smartGroupClose();
         }
 
@@ -823,7 +798,7 @@ class FormBuilder extends OriginalFormBuilder
 
         $partial = '<div class="form-group">'
             .'<label for="'.$name.'" class="col-sm-'.$this->labelGridCols.' control-label">'.$title.'</label>'
-            .'<div class="col-md-'.$this->controlGridCols.' ">'
+            .'<div class="col-sm-'.$this->controlGridCols.' ">'
             .'<div class="input-group date-time-picker">'
             .self::text($name, $value, ['class' => 'form-control', 'data-format' => trans('app.date_format_alt').$time])
             .'<span class="input-group-addon">'.HTML::fontIcon('calendar').'</span>'

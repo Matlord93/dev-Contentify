@@ -30,7 +30,8 @@ abstract class FrontController extends BaseController
     protected function setupLayout(string $layoutName = null)
     {
         if (! $layoutName) {
-				 $theme = Config::get('app.theme');
+            $theme = Config::get('app.theme');
+
             if (! $theme) {
                 throw new Exception('Error: Could not retrieve the theme name from the config!');
             }
@@ -59,10 +60,4 @@ abstract class FrontController extends BaseController
 
         return Redirect::to($url)->withInput(Request::only('search'));
     }
-	
-	public function callAction($method, $slug) 
-    { 
-        return parent::callAction($method, array_values($slug));
-		
-     }
 }

@@ -3,7 +3,7 @@
 <div class="video-player">
     @section('videos-video-youtube')
         @if ($video->provider == 'youtube')
-            <iframe src="https://www.youtube-nocookie.com/embed/{{ $video->permanent_id }}" allowfullscreen></iframe>
+            <iframe src="//www.youtube.com/embed/{{ $video->permanent_id }}" allowfullscreen></iframe>
             <script>
                 $(document).ready(function()
                 {
@@ -16,7 +16,7 @@
 
     @section('videos-video-vimeo')
         @if ($video->provider == 'vimeo')
-            <iframe src="player.vimeo.com/video/{{ $video->permanent_id }}" allowfullscreen></iframe> <p><a href="https://vimeo.com/{{ $video->permanent_id }}">
+            <iframe src="//player.vimeo.com/video/{{ $video->permanent_id }}" allowfullscreen></iframe> <p><a href="https://vimeo.com/{{ $video->permanent_id }}">
             <script>
                 $(document).ready(function()
                 {

@@ -50,7 +50,7 @@ class Translator extends OriginalTranslator
      */
     protected function makeReplacements($line, array $replace)
     {
-        $replace = $this->getSelector($replace);
+        $replace = $this->sortReplacements($replace);
 
         foreach ($replace as $key => $value) {
             $line = str_replace(':'.$key, $value, $line);

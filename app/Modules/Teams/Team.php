@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Modules\Teams;
 
@@ -6,12 +6,6 @@ use BaseModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use SoftDeletingTrait;
-use Request;
-use Contentify\Uploader;
-use File;
-use InterImage;
-use Redirect;
-
 
 /**
  * @property \Carbon                        $created_at
@@ -29,7 +23,7 @@ use Redirect;
  * @property int                            $access_counter
  * @property int                            $creator_id
  * @property int                            $updater_id
- * @property \App\Modules\Matches\Matche[]   $matches
+ * @property \App\Modules\Matches\Match[]   $matches
  * @property \User[]                        $members
  * @property \App\Modules\Teams\TeamCat     $teamCat
  * @property \App\Modules\Countries\Country $country
@@ -48,6 +42,11 @@ class Team extends BaseModel
 
     protected $fillable = ['title', 'text', 'position', 'published', 'team_cat_id', 'country_id'];
 
+    public static $fileHandling = [
+        'image' => ['type' => 'image'],
+        'banner' => ['type' => 'image'],
+    ];
+
     protected $rules = [
         'title'         => 'required|min:3',
         'position'      => 'nullable||integer',
@@ -57,7 +56,9 @@ class Team extends BaseModel
     ];
 
     public static $relationsData = [
-        'matches'   => [self::HAS_MANY, 'App\Modules\Matches\Matche', 'foreignKey' => 'left_team_id', 'dependency' => true],
+        'matches'   => [
+            self::HAS_MANY, 'App\Modules\Matches\Match', 'foreignKey' => 'left_team_id', 'dependency' => true
+        ],
         'members'   => [self::BELONGS_TO_MANY, 'User'],
         'teamCat'   => [self::BELONGS_TO, 'App\Modules\Teams\TeamCat'],
         'country'   => [self::BELONGS_TO, 'App\Modules\Countries\Country'],
@@ -66,8 +67,8 @@ class Team extends BaseModel
     ];
 
     /**
-     * The BaseModel's handleRelationalArray() method does not support
-     * orderBy() for pivot attributes, so we have to use old-school Eloquent instead.
+     * The BaseModel's handleRelationalArray() method does not support 
+     * orderBy() for pivot attributes so we have to use old-school Eloquent instead.
      *
      * @return BelongsToMany
      */
@@ -87,69 +88,4 @@ class Team extends BaseModel
     {
         return $query->wherePublished(true);
     }
-	
-	    public function uploadImage(string $fieldName)
-    {
-        $file       = Request::file($fieldName);
-        $extension  = $file->getClientOriginalExtension();
-
-        try {
-            $imgData = getimagesize($file->getRealPath()); // Try to gather info about the image
-        } catch (Exception $e) {
-            // Do nothing
-        }
-
-        if (! in_array(strtolower($extension), Uploader::ALLOWED_IMG_EXTENSIONS)) {
-            return Redirect::route('teams.edit', [$this->id])
-            ->withInput()->withErrors([trans('app.invalid_image')]);
-        }
-
-        // Check if image has a size. If not, it's not an image. Does not work for SVGs.
-        if (strtolower($extension) !== 'svg' and (! isset($imgData[2]) or ! $imgData[2])) {
-            return Redirect::route('teams.edit', [$this->id])
-                ->withInput()->withErrors([trans('app.invalid_image')]);
-        }
-
-        $filePath = public_path().'/uploads/teams/';
-
-        if (File::exists($filePath.$this->getOriginal($fieldName))) {
-            File::delete($filePath.$this->getOriginal($fieldName));
-        }
-
-        $filename           = $this->id.'_'.$fieldName.'.'.$extension;
-        $uploadedFile       = $file->move($filePath, $filename);
-        $this->$fieldName   = $filename;
-        $this->save();
-
-        if ($fieldName == 'image') {
-            if (File::exists($filePath.'80/'.$this->getOriginal($fieldName))) {
-                File::delete($filePath.'80/'.$this->getOriginal($fieldName));
-            }
-
-            InterImage::make($filePath.'/'.$filename)->resize(80, 80, function ($constraint) {
-                /** @var \Intervention\Image\Constraint $constraint */
-                $constraint->aspectRatio();
-            })->save($filePath.'80/'.$filename);
-        }
-    }
-	
-	public function deleteImage(string $fieldName)
-{
-    $filePath = public_path().'/uploads/teams/';
-    $filename = $this->$fieldName;
-    
-    if (File::exists($filePath.$filename)) {
-        File::delete($filePath.$filename);
-    }
-
-    if ($fieldName == 'image') {
-        if (File::exists($filePath.'80/'.$filename)) {
-            File::delete($filePath.'80/'.$filename);
-        }
-    }
-
-    $this->$fieldName = null;
-    $this->save();
-}
-
 }

@@ -40,9 +40,4 @@ class AdminImagesController extends BackController
 
         $this->pageView('images::admin_index', compact('images', 'searchString'));
     }
-    
-    public function callAction($method, $image) 
-    { 
-        return parent::callAction($method, array_values($image));
-     }
 }

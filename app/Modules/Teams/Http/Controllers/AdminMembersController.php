@@ -172,9 +172,4 @@ class AdminMembersController extends BackController
     {
         return Redirect::to('admin/members')->withInput(Request::only('search'));
     }
-	
-	public function callAction($method, $id) 
-    { 
-        return parent::callAction($method, array_values($id));
-     }
 }

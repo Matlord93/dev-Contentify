@@ -1,5 +1,6 @@
 <div class="widget widget-partners">
     <ul class="list-unstyled">
+        @section('partners-widget-index')
             @foreach ($partners as $partner)
                 @if ($partner->image)
                     <li>

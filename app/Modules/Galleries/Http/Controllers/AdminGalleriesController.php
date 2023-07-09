@@ -43,9 +43,4 @@ class AdminGalleriesController extends BackController
             }
         ]);
     }
-	
-	public function callAction($method, $gallery) 
-    { 
-        return parent::callAction($method, array_values($gallery));
-    }
 }

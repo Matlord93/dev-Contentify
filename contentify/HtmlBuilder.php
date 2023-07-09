@@ -95,7 +95,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
             $title = Config::get('app.name');
         }
 
-        return '<title> '.$title.'</title>';
+        return '<title>'.$title.'</title>';
     }
 
     /**
@@ -123,7 +123,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     public function table(array $header, array $rows, array $attributes) : string
     {
         $attrs = self::attributes($attributes);
-        $code = '<table style="color: #7f8891;" class="table table-hover " '.$attrs.'>';
+        $code = '<table class="table table-hover" '.$attrs.'>';
 
         /*
          * Table head
@@ -406,7 +406,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
         }
 
         if (! $category) {
-            $category = 'fa';
+            $category = 'fas';
 
             // Brand icons have their own category class. The only way to find out which class
             // we have to use is to maintain a list with the names of all brand icons and then

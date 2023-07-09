@@ -45,9 +45,4 @@ class AdminSlidesController extends BackController
             }
         ]);
     }
-	
-	public function callAction($method, $slide) 
-    { 
-        return parent::callAction($method, array_values($slide));
-    }
 }

@@ -39,9 +39,4 @@ class AdminAdvertCatsController extends BackController
             }
         ]);
     }
-	
-	public function callAction($method, $advert_cat) 
-    { 
-        return parent::callAction($method, array_values($advert_cat));
-    }
 }

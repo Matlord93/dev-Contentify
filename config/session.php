@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Str;
-
 return [
 
     /*
@@ -31,10 +29,9 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 1440), // 2880 minutes = 2 * 24 * 60 minutes = 2 days
+    'lifetime' => env('SESSION_LIFETIME', 2880), // 2880 minutes = 2 * 24 * 60 minutes = 2 days
 
-    'expire_on_close' => true,
-
+    'expire_on_close' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -74,7 +71,7 @@ return [
     */
 
     'connection' => env('SESSION_CONNECTION', null),
-	
+
     /*
     |--------------------------------------------------------------------------
     | Session Database Table
@@ -93,16 +90,14 @@ return [
     | Session Cache Store
     |--------------------------------------------------------------------------
     |
-    | While using one of the framework's cache driven session backends you may
+    | When using the "apc", "memcached", or "dynamodb" session drivers you may
     | list a cache store that should be used for these sessions. This value
     | must match with one of the application's configured cache "stores".
-    |
-    | Affects: "apc", "dynamodb", "memcached", "redis"
     |
     */
 
     'store' => env('SESSION_STORE', null),
-	
+
     /*
     |--------------------------------------------------------------------------
     | Session Sweeping Lottery
@@ -127,10 +122,7 @@ return [
     |
     */
 
-    'cookie' => env(
-        'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
-    ),
+    'cookie' => 'contentify_session',
 
     /*
     |--------------------------------------------------------------------------
@@ -157,7 +149,7 @@ return [
     */
 
     'domain' => env('SESSION_DOMAIN', null),
-	
+
     /*
     |--------------------------------------------------------------------------
     | HTTPS Only Cookies
@@ -165,12 +157,12 @@ return [
     |
     | By setting this option to true, session cookies will only be sent back
     | to the server if the browser has a HTTPS connection. This will keep
-    | the cookie from being sent to you when it can't be done securely.
+    | the cookie from being sent to you if it can not be done securely.
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE', true),
-	
+    'secure' => env('SESSION_SECURE_COOKIE', false),
+
     /*
     |--------------------------------------------------------------------------
     | HTTP Access Only
@@ -182,7 +174,7 @@ return [
     |
     */
 
-    'http_only' => false,
+    'http_only' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -191,12 +183,11 @@ return [
     |
     | This option determines how your cookies behave when cross-site requests
     | take place, and can be used to mitigate CSRF attacks. By default, we
-    | will set this value to "lax" since this is a secure default value.
+    | do not enable this as other CSRF protection services are in place.
     |
-    | Supported: "lax", "strict", "none", null
+    | Supported: "lax", "strict", "none"
     |
     */
-
-    'same_site' => 'none',
+    'same_site' => null,
 
 ];

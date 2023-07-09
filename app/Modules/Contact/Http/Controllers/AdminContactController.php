@@ -96,9 +96,4 @@ class AdminContactController extends BackController
         $this->alertSuccess(trans('app.successful'));
         $this->show($id);
     }
-	
-		public function callAction($method, $contact) 
-    { 
-        return parent::callAction($method, array_values($contact));
-     }
 }

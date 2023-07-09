@@ -49,7 +49,7 @@ class AdminUsersController extends BackController
                     Hover::image(asset('uploads/users/'.$user->image));
                 }
 
-                if ($user->hasAccess('internal')) {
+                if ($user->hasAccess('internal', PERM_READ)) {
                     $membership = HTML::fontIcon('check');
                 } else {
                     $membership = HTML::fontIcon('times');
@@ -195,9 +195,4 @@ class AdminUsersController extends BackController
             return Response::make(trans('app.not_found'), 500);
         }
     }
-	
-	  public function callAction($method, $user) 
-    { 
-        return parent::callAction($method, array_values($user));
-     }
 }

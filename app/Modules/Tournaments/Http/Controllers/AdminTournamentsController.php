@@ -39,8 +39,4 @@ class AdminTournamentsController extends BackController
             }
         ]);
     }
-	public function callAction($method, $tournament) 
-    { 
-        return parent::callAction($method, array_values($tournament));
-    }
 }

@@ -16,6 +16,7 @@ class AddUsername extends Migration
         {
             $table->string('username', 20)->unique();
             $table->string('slug')->unique();
+            $table->integer('updater_id')->unsigned()->default(0);
         });
     }
 

@@ -39,9 +39,4 @@ class AdminNewsCatsController extends BackController
             }
         ]);
     }
-	
-	public function callAction($method, $news_cat) 
-    { 
-        return parent::callAction($method, array_values($news_cat));
-    }
 }

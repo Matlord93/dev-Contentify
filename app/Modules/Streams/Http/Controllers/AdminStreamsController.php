@@ -42,9 +42,4 @@ class AdminStreamsController extends BackController
             }
         ]);
     }
-	
-	public function callAction($method, $video) 
-    { 
-        return parent::callAction($method, array_values($video));
-    }
 }

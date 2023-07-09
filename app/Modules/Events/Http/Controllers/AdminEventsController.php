@@ -42,9 +42,4 @@ class AdminEventsController extends BackController
             }
         ]);
     }
-	
-	public function callAction($method, $event) 
-    { 
-        return parent::callAction($method, array_values($event));
-    }
 }

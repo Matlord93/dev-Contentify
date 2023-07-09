@@ -24,17 +24,17 @@
     {!! Form::smartText('right_lineup', trans('matches::right_lineup')) !!}
 
     {!! Form::smartTextarea('text', trans('app.description'), true) !!}
-	
+
     {!! Form::smartDateTime('played_at', trans('matches::played_at')) !!}
     
     {!! Form::smartCheckbox('featured', trans('app.featured')) !!}
-	
-   <!-- We can't add scores to a match that doesn't actually exist -->
+
+    <!-- We can't add scores to a match that doesn't actually exist -->
     @if (isset($model))
         {!! Form::smartGroupOpen(null, trans('app.object_match_scores')) !!}
             <div class="scores">
-                @foreach ($model->matche_scores as $matcheScore)
-                    @include('matches::admin_map', compact('matcheScore'))
+                @foreach ($model->match_scores as $matchScore)
+                    @include('matches::admin_map', compact('matchScore'))
                 @endforeach
 
                 <span class="add-new">+</span>
@@ -72,7 +72,7 @@
             leftTeamLineup.call($('select#_relation_leftTeam'));
         @endif
         
-        // We can't add scores to a matche that doesn't actually exist
+        // We can't add scores to a match that doesn't actually exist
         @if (isset($model))
             var template = '{!! Form::smartSelectForeign('map_id', trans('app.object_map')) !!} {!! Form::smartGroupOpen('left_score', trans('matches::score')) !!} <input type="text" name="left_score" style="display: inline-block; max-width: 50px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="display: inline-block; max-width: 50px" value="%%scoreRight%%"> {!! Form::smartGroupClose() !!}';
 
@@ -89,7 +89,7 @@
                         url: contentify.baseUrl + 'admin/matches/scores/store',
                         type: 'POST',
                         data: {
-                            matche_id:       "{!! $model->id !!}",
+                            match_id:       "{!! $model->id !!}",
                             map_id:         $('#map_id').val(),
                             left_score:     $('input[name=left_score]').val(),
                             right_score:    $('input[name=right_score]').val(),

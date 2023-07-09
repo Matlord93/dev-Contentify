@@ -344,7 +344,7 @@ class Installer
             $table->integer('left_score')->default(0);
             $table->integer('right_score')->default(0);
             $table->nullableTimestamps();
-        }, ['matche_id', 'map_id'], false);
+        }, ['match_id', 'map_id'], false);
 
         $this->create('matches', function(Blueprint $table)
         {
@@ -885,10 +885,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         ("de_cache", "cs_cache.jpg", 1, 1, 1),
         ("de_mirage", "cs_mirage.jpg", 1, 1, 1),
         ("de_season", "cs_season.jpg", 1, 1, 1),
-        ("de_overpass", "cs_overpass.jpg", 1, 1, 1),	
-		("de_vertigo", "de_vertigo.jpg", 1, 1, 1),
-        ("de_ancient", "de_ancient.jpg", 1, 1, 1),
-        ("de_anubis", "de_anubis.jpg", 1, 1, 1)');
+        ("de_overpass", "cs_overpass.jpg", 1, 1, 1)');
 
         DB::insert('INSERT INTO tournaments(title, short, creator_id, updater_id) VALUES
         ("Electronic Sports League", "ESL", 1, 1),
@@ -933,6 +930,7 @@ information about your stored data, and possibly entitlement to correction, bloc
             'slug'        => 'users',
             'permissions' => [
                 'frontend'  => true,
+                'comments'  => PERM_CREATE, // Users can also update and delete their own comments
                 'ratings'   => PERM_CREATE,
             ]
         ]);
@@ -1234,7 +1232,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'password_confirmation' => $passwordConfirmation,
             ],
             [
-                'username'  => 'alpha_num|required|min:3|not_in:edit,password,daemon',
+                'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password,daemon',
                 'email'     => 'email|required|unique:users,email',
                 'password'  => 'required|min:6|confirmed',
             ]
@@ -1248,9 +1246,9 @@ information about your stored data, and possibly entitlement to correction, bloc
          * Create the admin user (with ID = 2)
          */
         $user = Sentinel::register([
-			'username'  => $username,
             'email'     => $email,
             'password'  => $password,
+            'username'  => $username,
         ], true);
 
         /*

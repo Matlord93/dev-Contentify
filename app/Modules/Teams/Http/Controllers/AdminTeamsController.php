@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Modules\Teams\Http\Controllers;
 
@@ -7,7 +7,6 @@ use BackController;
 use Hover;
 use HTML;
 use ModelHandlerTrait;
-use Request;
 
 class AdminTeamsController extends BackController
 {
@@ -29,7 +28,7 @@ class AdminTeamsController extends BackController
             'buttons'   => ['new', HTML::button(trans('app.object_members'), url('admin/members'), 'users')],
             'tableHead' => [
                 trans('app.id')         => 'id',
-                trans('app.published')  => 'published',
+                trans('app.published')  => 'published', 
                 trans('app.title')      => 'title',
                 trans('app.category')   => 'team_cat_id'
             ],
@@ -47,39 +46,13 @@ class AdminTeamsController extends BackController
         ]);
     }
 
-    public function update(int $id)
-    {
-
-        $teams = Team::findOrFail($id);
-
-        if (Request::hasFile('image')) {
-            $result = $teams->uploadImage('image');
-            if ($result) {
-                return $result;
-            }
-        } elseif (Request::get('image') == '.') {
-            $teams->deleteImage('image');
-        }
-
-        if (Request::hasFile('banner')) {
-            $result = $teams->uploadImage('banner');
-            if ($result) {
-                return $result;
-            }
-        } elseif (Request::get('banner') == '.') {
-            $teams->deleteImage('banner');
-        }
-
-        $teams->save();
-    }
-
     /**
      * Returns the lineup of a team (for example an AJAX call)
-     *
+     * 
      * @param  int $id The ID of the team
      * @return string
      */
-    public function lineup(int $id) : string
+    public function lineup($id)
     {
         /** @var Team $team */
         $team = Team::findOrFail($id);
@@ -94,10 +67,4 @@ class AdminTeamsController extends BackController
 
         return $lineup;
     }
-
-		public function callAction($method, $team) 
-    { 
-        return parent::callAction($method, array_values($team));
-     }
-	
 }

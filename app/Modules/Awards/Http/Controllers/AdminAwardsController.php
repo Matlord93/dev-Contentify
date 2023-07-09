@@ -43,8 +43,4 @@ class AdminAwardsController extends BackController
             }
         ]);
     }
-	public function callAction($method, $award) 
-    { 
-        return parent::callAction($method, array_values($award));
-    }
 }

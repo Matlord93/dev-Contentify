@@ -60,10 +60,4 @@ class AdminPagesController extends BackController
             }
         ]);
     }
-	
-		public function callAction($method, $page) 
-    { 
-        return parent::callAction($method, array_values($page));
-     }
-	
 }

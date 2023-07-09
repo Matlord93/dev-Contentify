@@ -1,5 +1,5 @@
 @if ($item->itemType == 'news')
-    <div class="item news" data-more={{ $more }}>
+    <div class="item news" data-timestamp="{{ $item->published_at->timestamp }}" data-time-offset="{{ $item->published_at->offsetHours }}" data-more={{ $more }}>
         <div class="meta above clearfix">
             <div class="category pull-left">
                 {!! HTML::fontIcon('newspaper') !!} {!! trans('app.object_news') !!}
@@ -28,7 +28,7 @@
 @endif
 
 @if ($item->itemType == 'video')
-    <div class="item video" data-more={{ $more }}>
+    <div class="item video" data-timestamp="{{ $item->published_at->timestamp }}" data-time-offset="{{ $item->published_at->offsetHours }}" data-more={{ $more }}>
         <div class="meta above clearfix">
             <div class="category">
                 {!! HTML::fontIcon('youtube') !!} {!! trans('app.object_video') !!}

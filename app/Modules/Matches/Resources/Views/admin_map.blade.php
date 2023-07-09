@@ -1,7 +1,7 @@
-<span class="item" data-id="{!! $matcheScore->id !!}" data-map-id="{!! $matcheScore->map->id !!}" data-left-score="{!! $matcheScore->left_score !!}" data-right-score="{!! $matcheScore->right_score !!}">
-    @if ($matcheScore->map->image)
-        <img src="{!! $matcheScore->map->uploadPath().'16/'.$matcheScore->map->image !!}" alt="Icon">
+<span class="item" data-id="{!! $matchScore->id !!}" data-map-id="{!! $matchScore->map->id !!}" data-left-score="{!! $matchScore->left_score !!}" data-right-score="{!! $matchScore->right_score !!}">
+    @if ($matchScore->map->image)
+        <img src="{!! $matchScore->map->uploadPath().'16/'.$matchScore->map->image !!}" alt="Icon">
     @endif
     
-    {!! $matcheScore->map->title !!}: <span class="score">{!! $matcheScore->left_score !!}:{!! $matcheScore->right_score !!}</span>
+    {!! $matchScore->map->title !!}: <span class="score">{!! $matchScore->left_score !!}:{!! $matchScore->right_score !!}</span>
 </span>

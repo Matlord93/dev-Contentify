@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
 use Crypt;
@@ -10,7 +8,7 @@ use MsgException;
 
 class VerifyCsrfToken extends Middleware
 {
-	
+
     /**
      * Handle an incoming request.
      * Note: This method overwrites Laravel's default handle() method.
@@ -26,12 +24,17 @@ class VerifyCsrfToken extends Middleware
             return $next($request);
         }
 
+        if (! hash_equals($request->session()->token(), $request->input('_token'))) {
+            throw new TokenMismatchException;
+        }
+
         /* 
          * Spam protection: Forms that have set a value for _created_at
          * are protected against mass submitting.
          * WARNING: Not sending the field will not trigger the verification!
          */
         if ($time = $request->input('_created_at')) {
+            $time = Crypt::decrypt($time);
 
             if (is_numeric($time)) {
                 $time = (int) $time;
@@ -41,6 +44,7 @@ class VerifyCsrfToken extends Middleware
                 }
             }
 
+            throw new MsgException(trans('app.spam_protection'));
         }
 
         return $next($request);
